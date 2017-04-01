@@ -29,3 +29,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Heartland2017/Temp/
+*.meta
