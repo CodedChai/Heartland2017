@@ -31,4 +31,7 @@ sysinfo.txt
 Heartland2017/Temp/
 *.meta
 *.info
+*.stamp
+*.dwlt
+/Library/assetDatabse3
 /Library/metadata
