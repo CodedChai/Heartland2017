@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
+    // Update movement on physics due to collisions
     void FixedUpdate()
     {
         Move();
@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour {
 
     void Move()
     {
-        transform.Translate(new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime));
+        transform.Translate(new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0f));
     }
+
+
 }
