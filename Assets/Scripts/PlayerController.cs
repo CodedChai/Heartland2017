@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         speed = character.GetMoveSpeed();
         maxHP = character.GetHP();
+        character.Primary(1, 1);
+        character.Secondary(1, 1);
 	}
 	
 	// Update is called once per frame

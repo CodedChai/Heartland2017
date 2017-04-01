@@ -11,8 +11,9 @@ public class Teleport : CharacterType {
 		hp = 4;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    override public void Primary(float joyX, float joyY)
+    {
+        print("neawt");
+    }
 }
