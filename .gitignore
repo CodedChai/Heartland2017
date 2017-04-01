@@ -29,7 +29,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Heartland2017/Temp/
-*.meta
 *.info
 *.stamp
 *.dwlt
