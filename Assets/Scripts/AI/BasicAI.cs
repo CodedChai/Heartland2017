@@ -32,12 +32,16 @@ public class BasicAI : MonoBehaviour {
 	void Update () {
         if (update)
         {
-            Patrol();
+            StateHandler();
+        }
+        if (SeePlayer())
+        {
+            state = 1;
         }
 	}
 
 
-    void StateUpdate()
+    void StateHandler()
     {
         switch (state)
         {
@@ -104,5 +108,11 @@ public class BasicAI : MonoBehaviour {
     void Search()
     {
 
+    }
+
+    bool SeePlayer()
+    {
+        bool playerSeen = false;
+        return playerSeen;
     }
 }

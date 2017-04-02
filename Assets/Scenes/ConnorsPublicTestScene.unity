@@ -147,16 +147,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114376945360013388, guid: a7ee5678efd792146a9b78851a5e0943,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 283718670}
     - target: {fileID: 114408353727079404, guid: a7ee5678efd792146a9b78851a5e0943,
         type: 2}
       propertyPath: player
       value: 
       objectReference: {fileID: 657223252}
+    - target: {fileID: 114376945360013388, guid: a7ee5678efd792146a9b78851a5e0943,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 283718670}
     - target: {fileID: 1654604668382692, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
       propertyPath: m_Name
       value: EnemyController

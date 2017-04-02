@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: {fileID: 114834461227887740}
+  hp: 1
 --- !u!114 &114834461227887740
 MonoBehaviour:
   m_ObjectHideFlags: 1
