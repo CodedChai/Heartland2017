@@ -6,6 +6,8 @@ public class PathFollower : MonoBehaviour
 {
     public Vector3 targetWayPoint;
 
+    public bool isPatroling = true;
+
     public float speed = 4f;
     public int id;
 
@@ -26,7 +28,6 @@ public class PathFollower : MonoBehaviour
     {
         targetWayPoint = pathfinder.nextPosition;
         walk();
-
     }
 
     void walk()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class BasicEnemyAIController : MonoBehaviour {
 
     public int damage;
 
