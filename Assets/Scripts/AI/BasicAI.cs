@@ -113,6 +113,7 @@ public class BasicAI : MonoBehaviour {
     bool SeePlayer()
     {
         bool playerSeen = false;
+        
         return playerSeen;
     }
 }
