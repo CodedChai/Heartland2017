@@ -7,7 +7,7 @@ public class BasicAI : MonoBehaviour {
     public GameObject patrolPointsParent;
     public Transform[] patrolPoints;
     public int state = 0; // 0 is patrol, 1 is path to player, 2 is attack, 3 is search for player
-    public bool update = true;
+    public bool updatePatrol = true;
 
     public GameObject enemyController;
     private PathFollower pathFollower;
@@ -19,6 +19,8 @@ public class BasicAI : MonoBehaviour {
     public bool patrolReverse = false;
     public float attackDistance = .05f;
     private Transform myTrans;
+
+    public float patrolStationaryTime = 1f;
 
     RaycastHit2D hit0;
     RaycastHit2D hit1;
@@ -33,17 +35,13 @@ public class BasicAI : MonoBehaviour {
         pathfinding = GetComponentInParent<Pathfinding>();
         grid = GetComponentInParent<Grid>();
         myTrans = transform;
-       // enemyController = GetComponentInParent<GameObject>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (update)
-        {
-            StateHandler();
-           
-        }
-      
+        // enemyController = GetComponentInParent<GameObject>();
+        pathfinding.target = patrolPoints[currentPatrolPoint];
+    }
+
+    // Update is called once per frame
+    void Update () {
+        StateHandler();
 	}
 
 
@@ -52,6 +50,7 @@ public class BasicAI : MonoBehaviour {
         if ((state == 0 || state == 3) && SeePlayer())
         {
             state = 1;
+            pathFollower.shouldMove = true;
         }
 
         switch (state)
@@ -74,41 +73,53 @@ public class BasicAI : MonoBehaviour {
         }
     }
 
-    IEnumerator PauseUpdates(float pauseLength)
+    IEnumerator PausePatrolUpdates(float pauseLength)
     {
-        update = false;
+        updatePatrol = false;
         yield return new WaitForSeconds(pauseLength);
-        update = true;
+        updatePatrol = true;
+        yield return null;
+    }
+
+    IEnumerator PauseMoving(float pauseLength)
+    {
+        pathFollower.shouldMove = false;
+        yield return new WaitForSeconds(pauseLength);
+        pathFollower.shouldMove = true;
         yield return null;
     }
 
     void Patrol()
     {
-        pathfinding.target = patrolPoints[currentPatrolPoint];
-        if(Vector2.Distance(pathFollower.targetWayPoint, myTrans.position) < .01f)
+        if(updatePatrol && Vector2.Distance(pathFollower.targetWayPoint, myTrans.position) < .01f)
         {
-            StartCoroutine(PauseUpdates(.1f));
-            if (patrolReverse)
+            StartCoroutine(PausePatrolUpdates(.4f));
+            if (pathFollower.shouldMove)
             {
-                if (currentPatrolPoint == 1) // Starts at 1 for now because of silliness with unity
+                if (patrolReverse)
                 {
-                    patrolReverse = false;
+                    if (currentPatrolPoint == 1) // Starts at 1 for now because of silliness with unity
+                    {
+                        patrolReverse = false;
+                    }
+                    else
+                    {
+                        currentPatrolPoint--;
+                    }
                 }
-                else
+                else if (!patrolReverse)
                 {
-                    currentPatrolPoint--;
+                    if (currentPatrolPoint == patrolPoints.Length - 1)
+                    {
+                        patrolReverse = true;
+                    }
+                    else
+                    {
+                        currentPatrolPoint++;
+                    }
                 }
-            }
-            else if(!patrolReverse)
-            {
-                if (currentPatrolPoint == patrolPoints.Length - 1)
-                {
-                    patrolReverse = true;
-                }
-                else
-                {
-                    currentPatrolPoint++;
-                }
+                pathfinding.target = patrolPoints[currentPatrolPoint];
+                //StartCoroutine(PauseMoving(patrolStationaryTime));
             }
         }
     }
