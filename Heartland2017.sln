@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heartland2017", "Heartland2017.csproj", "{78A8F0D9-2F01-AD23-8D5E-763CD789A14F}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HEARTLAND2017", "Assembly-CSharp.csproj", "{4C668562-6540-FABE-969B-41209A06D675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{78A8F0D9-2F01-AD23-8D5E-763CD789A14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78A8F0D9-2F01-AD23-8D5E-763CD789A14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78A8F0D9-2F01-AD23-8D5E-763CD789A14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78A8F0D9-2F01-AD23-8D5E-763CD789A14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C668562-6540-FABE-969B-41209A06D675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C668562-6540-FABE-969B-41209A06D675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C668562-6540-FABE-969B-41209A06D675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C668562-6540-FABE-969B-41209A06D675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

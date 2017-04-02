@@ -8,15 +8,18 @@ public class PlayerController : MonoBehaviour {
     float speed;
     int maxHP;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
-	
+
+    private Animator animator;
+
     // Use this for initialization
 	void Start ()
     {
+        animator = this.GetComponent<Animator>();
         speed = character.GetMoveSpeed();
         maxHP = character.GetHP();
         prevPos = transform.position;
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour {
     {
         prevPos = transform.position;
         Move();
+        UpdateAnimationVars();
     }
 
     //basic movement. Might make this check to see if it's doing stuff but idk
@@ -53,6 +57,11 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         transform.position = prevPos;
+    }
+
+    void UpdateAnimationVars() {
+      animator.SetFloat("x_mov", speed * Input.GetAxis("Horizontal"));
+      animator.SetFloat("y_mov", speed * Input.GetAxis("Vertical"));
     }
 
 
