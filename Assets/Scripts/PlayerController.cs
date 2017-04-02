@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     public CharacterType character;
     float speed;
     int maxHP;
+    public Rigidbody2D rbody2d;
 	// Use this for initialization
 	void Start () {
         speed = character.GetMoveSpeed();

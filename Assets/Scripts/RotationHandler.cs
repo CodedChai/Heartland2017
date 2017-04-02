@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotationHandler : MonoBehaviour {
-    private float angle;
+    public float angle;
     SpriteRenderer spriteRenderer;
     // Use this for initialization
     void Start () {
