@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour {
 
+    public List<Node> path;
     public Transform seeker, target;
-
+    public Vector3 nextPosition;
+    public float attackDistance = .5f;
     Grid grid;
 
     void Awake()
@@ -15,7 +17,9 @@ public class Pathfinding : MonoBehaviour {
 
     void Update()
     {
-        FindPath(seeker.position, target.position);
+        
+            FindPath(seeker.position, target.position);
+        
     }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
@@ -68,7 +72,7 @@ public class Pathfinding : MonoBehaviour {
 
     void RetracePath(Node startNode, Node endNode)
     {
-        List<Node> path = new List<Node>();
+        path = new List<Node>();
         Node currentNode = endNode;
 
         while(currentNode != startNode)
@@ -77,6 +81,7 @@ public class Pathfinding : MonoBehaviour {
             currentNode = currentNode.parent;
         }
         path.Reverse();
+        nextPosition = path[0].worldPosition;
 
         grid.path = path;
 
