@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 4589959070364094}
   - component: {fileID: 212400406786031610}
   - component: {fileID: 114508540521659354}
+  - component: {fileID: 114408353727079404}
   m_Layer: 0
   m_Name: Fake Enemy
   m_TagString: Untagged
@@ -202,7 +203,27 @@ MonoBehaviour:
   seeker: {fileID: 4589959070364094}
   target: {fileID: 0}
   nextPosition: {x: 0, y: 0, z: 0}
-  attackDistance: 0.5
+--- !u!114 &114408353727079404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633989230616952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7d0147258619148a81b8f7c2bb0bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPointsParent: {fileID: 1212040468490930}
+  patrolPoints: []
+  state: 0
+  update: 1
+  enemyController: {fileID: 1654604668382692}
+  player: {fileID: 0}
+  pathfinding: {fileID: 0}
+  grid: {fileID: 0}
+  currentPatrolPoint: 1
+  patrolReverse: 0
 --- !u!114 &114508540521659354
 MonoBehaviour:
   m_ObjectHideFlags: 1

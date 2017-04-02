@@ -7,7 +7,6 @@ public class Pathfinding : MonoBehaviour {
     public List<Node> path;
     public Transform seeker, target;
     public Vector3 nextPosition;
-    public float attackDistance = .5f;
     Grid grid;
 
     void Awake()

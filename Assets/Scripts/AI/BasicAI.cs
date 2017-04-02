@@ -13,7 +13,7 @@ public class BasicAI : MonoBehaviour {
     private PathFollower pathFollower;
     public GameObject player;
     public Pathfinding pathfinding;
-
+    public Grid grid;
 
     public int currentPatrolPoint = 1;
     public bool patrolReverse = false;
@@ -24,6 +24,7 @@ public class BasicAI : MonoBehaviour {
         patrolPoints = patrolPointsParent.GetComponentsInChildren<Transform>();
         pathFollower = GetComponent<PathFollower>();
         pathfinding = GetComponentInParent<Pathfinding>();
+        grid = GetComponentInParent<Grid>();
        // enemyController = GetComponentInParent<GameObject>();
 	}
 	
@@ -60,7 +61,7 @@ public class BasicAI : MonoBehaviour {
 
     void Patrol()
     {
-        pathfinding.seeker = patrolPoints[currentPatrolPoint];
+        pathfinding.target = patrolPoints[currentPatrolPoint];
         if(Vector2.Distance(pathFollower.targetWayPoint, transform.position) < Vector2.kEpsilon)
         {
             if (!patrolReverse)
