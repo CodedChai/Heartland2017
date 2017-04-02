@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
+
+    public int direction = 0; // 0 is left, 1 is right, 2 is down, 3 is up 
     public Vector3 targetWayPoint;
 
+    Vector3 dir;
     public bool isPatroling = true;
 
     public float speed = 4f;
@@ -13,8 +16,11 @@ public class PathFollower : MonoBehaviour
 
     public Pathfinding pathfinder;
 
+    private Transform myTrans;
+
     void Start()
     {
+        myTrans = transform;
         if (pathfinder == null)
         {
             pathfinder = GetComponentInParent<Pathfinding>();
@@ -27,12 +33,40 @@ public class PathFollower : MonoBehaviour
     void Update()
     {
         targetWayPoint = pathfinder.nextPosition;
-        walk();
+        Walk();
+        direction = Direction();
+        //print("Direction is: " + dir + " which is " + direction);
     }
 
-    void walk()
+    void Walk()
     {
+     
+        myTrans.position = Vector3.MoveTowards(myTrans.position, targetWayPoint, speed * Time.deltaTime);
+    }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetWayPoint, speed * Time.deltaTime);
+    int Direction()
+    {
+        dir = (targetWayPoint - myTrans.position).normalized;
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if(dir.x < 0)
+            {
+                return 0;
+            } else
+            {
+                return 1;
+            }
+        }
+        else if(Mathf.Abs(dir.x) < Mathf.Abs(dir.y))
+        {
+            if(dir.y < 0)
+            {
+                return 2;
+            } else
+            {
+                return 3;
+            }
+        }
+        return direction;
     }
 }
