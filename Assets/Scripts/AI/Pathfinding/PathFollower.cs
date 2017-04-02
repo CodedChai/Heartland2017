@@ -8,8 +8,8 @@ public class PathFollower : MonoBehaviour
     public int direction = 0; // 0 is left, 1 is right, 2 is down, 3 is up 
     public Vector3 targetWayPoint;
 
-    Vector3 dir;
-    public bool isPatroling = true;
+    public Vector3 dirVec;
+    public bool shouldMove = true;
 
     public float speed = 4f;
     public int id;
@@ -32,10 +32,13 @@ public class PathFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetWayPoint = pathfinder.nextPosition;
-        Walk();
-        direction = Direction();
-        //print("Direction is: " + dir + " which is " + direction);
+        if (shouldMove)
+        {
+            targetWayPoint = pathfinder.nextPosition;
+            Walk();
+            direction = Direction();
+            //print("Direction is: " + dir + " which is " + direction);
+        }
     }
 
     void Walk()
@@ -46,10 +49,10 @@ public class PathFollower : MonoBehaviour
 
     int Direction()
     {
-        dir = (targetWayPoint - myTrans.position).normalized;
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        dirVec = (targetWayPoint - myTrans.position).normalized;
+        if (Mathf.Abs(dirVec.x) > Mathf.Abs(dirVec.y))
         {
-            if(dir.x < 0)
+            if(dirVec.x < 0)
             {
                 return 0;
             } else
@@ -57,9 +60,9 @@ public class PathFollower : MonoBehaviour
                 return 1;
             }
         }
-        else if(Mathf.Abs(dir.x) < Mathf.Abs(dir.y))
+        else if(Mathf.Abs(dirVec.x) < Mathf.Abs(dirVec.y))
         {
-            if(dir.y < 0)
+            if(dirVec.y < 0)
             {
                 return 2;
             } else

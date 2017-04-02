@@ -200,7 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8874520d46bb1d842ac9e4a7a96faf4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
   targetWayPoint: {x: 0, y: 0, z: 0}
+  dirVec: {x: 0, y: 0, z: 0}
   isPatroling: 1
   speed: 1
   id: 0
@@ -224,6 +226,7 @@ MonoBehaviour:
   player: {fileID: 0}
   pathfinding: {fileID: 0}
   grid: {fileID: 0}
+  lineOfSite: 5
   currentPatrolPoint: 1
   patrolReverse: 0
 --- !u!114 &114839305573483876
