@@ -305,9 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effb11bc913c310478c3973fc76cb4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackObj: {fileID: 1702632820037838}
   melee: {fileID: 114376615409320464}
-  rotationTrans: {fileID: 0}
+  rotationTrans: {fileID: 4591589338278646}
   projectile: {fileID: 1710200708061872, guid: 782b37b810fbdff4d89fffa7b87efda3, type: 2}
 --- !u!120 &120173619697163352
 LineRenderer:
@@ -449,7 +448,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1445252531
+  randomSeed: 1725770874
   InitialModule:
     serializedVersion: 3
     enabled: 1

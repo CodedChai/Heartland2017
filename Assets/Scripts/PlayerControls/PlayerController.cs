@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public CharacterType characterType;//archetype/movesets
     float speed;
     int maxHP;
+    public int hp;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
 
     private Animator animator;
@@ -14,14 +15,16 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
 	void Start ()
     {
-        animator = this.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         speed = characterType.GetMoveSpeed();
         maxHP = characterType.GetHP();
+        hp = maxHP;
         prevPos = transform.position;
         if(characterType == null)
         {
             characterType = GetComponent<MindControlType>();
         }
+        hp = maxHP;
     }
 
 	// Update is called once per frame

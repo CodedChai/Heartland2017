@@ -5,7 +5,6 @@ public class TeleportType : CharacterType{
 
     bool neutral = true;//check if player can do stuff
 
-    public GameObject attackObj;//gameObject containing hitbox of the move-I couldn't drag the script to it, so we get it from a gameObject at the start
     public Attack melee;//the script associated w/ the melee attack
     public Transform rotationTrans;
     public GameObject projectile;//the projectile.
@@ -16,9 +15,7 @@ public class TeleportType : CharacterType{
         //overwrite movespeed and hp here.
         movespeed = 3;
         hp = 4;
-        rotationTrans = transform.Find("Rotation");
         //setting melee
-        melee = attackObj.GetComponent<Attack>();
     }
 
     //Primary attack. A-Teleports.
@@ -50,13 +47,24 @@ public class TeleportType : CharacterType{
             float recovery = .2f;
             float distance = 3;
 
+            //using these because going back and forth between rotation and doing trig sounds hard
+
+
+             LayerMask mask = 1<<8;
+
             //set up teleport point
-            Vector3 futPos = transform.position + new Vector3(rotationTrans.eulerAngles.x * distance, rotationTrans.eulerAngles.y * distance);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, rotationTrans.up, distance, mask);
+            if (hit.collider != null)
+            {
+                distance = Mathf.Abs(hit.point.y - transform.position.y);
+            }
+
+            Vector3 futPos = transform.position +rotationTrans.up * distance;
+
             yield return new WaitForSeconds(startup);
-            
             //remove hitboxes or set invul as true for now.
             yield return new WaitForSeconds(invul);
-            
+
             //actually teleport
             transform.position = futPos;
             yield return new WaitForSeconds(recovery);
