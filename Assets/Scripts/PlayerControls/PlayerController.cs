@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public CharacterType character;//archetype/movesets
+    public CharacterType characterType;//archetype/movesets
     float speed;
     int maxHP;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
@@ -15,25 +15,29 @@ public class PlayerController : MonoBehaviour {
 	void Start ()
     {
         animator = this.GetComponent<Animator>();
-        speed = character.GetMoveSpeed();
-        maxHP = character.GetHP();
+        speed = characterType.GetMoveSpeed();
+        maxHP = characterType.GetHP();
         prevPos = transform.position;
-	}
+        if(characterType == null)
+        {
+            characterType = GetComponent<MindControlType>();
+        }
+    }
 
 	// Update is called once per frame
 	void Update ()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            character.Primary(Input.GetAxis("HorizontalR"), Input.GetAxis("VerticalR"));
+            characterType.Primary();
         }
         else if(Input.GetButtonDown("Fire2"))
         {
-            character.Secondary(Input.GetAxis("HorizontalR"), Input.GetAxis("VerticalR"));
+            characterType.Secondary();
         }
         else if(Input.GetButtonDown("Fire3"))
         {
-            character.Tertiary(Input.GetAxis("HorizontalR"), Input.GetAxis("VerticalR"));
+            characterType.Tertiary();
         }
 
 

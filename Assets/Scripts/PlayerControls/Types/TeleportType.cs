@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Teleport : CharacterType{
+public class TeleportType : CharacterType{
 
     bool neutral = true;//check if player can do stuff
 
-    public GameObject at;//gameObject containing hitbox of the move-I couldn't drag the script to it, so we get it from a gameObject at the start
+    public GameObject attackObj;//gameObject containing hitbox of the move-I couldn't drag the script to it, so we get it from a gameObject at the start
     public Attack melee;//the script associated w/ the melee attack
-
+    public Transform rotationTrans;
     public GameObject projectile;//the projectile.
 
 	// Use this for initialization
@@ -16,31 +16,31 @@ public class Teleport : CharacterType{
         //overwrite movespeed and hp here.
         movespeed = 3;
         hp = 4;
-
+        rotationTrans = transform.Find("Rotation");
         //setting melee
-        melee = at.GetComponent<Attack>();
+        melee = attackObj.GetComponent<Attack>();
     }
 
     //Primary attack. A-Teleports.
-    override public void Primary(float joyX, float joyY)
+    override public void Primary()
     {
-        StartCoroutine(PrimaryA(joyX, joyY));
+        StartCoroutine(PrimaryA());
     }
 
     //secondary attack, melee hit. B
-    public override void Secondary(float joyX, float joyY)
+    public override void Secondary()
     {
-        StartCoroutine(SecondaryA(joyX, joyY));
+        StartCoroutine(SecondaryA());
     }
 
     //thrid attack, the projectile. Y
-    public override void Tertiary(float joyX, float joyY)
+    public override void Tertiary()
     {
-        StartCoroutine(TertiaryA(joyX, joyY));
+        StartCoroutine(TertiaryA());
     }
 
     //primary attack: a teleport.
-    private IEnumerator PrimaryA(float joyX, float joyY)
+    private IEnumerator PrimaryA()
     {
         if (neutral)
         {
@@ -51,7 +51,7 @@ public class Teleport : CharacterType{
             float distance = 3;
 
             //set up teleport point
-            Vector3 futPos = transform.position + new Vector3(joyX * distance, joyY * distance);
+            Vector3 futPos = transform.position + new Vector3(rotationTrans.eulerAngles.x * distance, rotationTrans.eulerAngles.y * distance);
             yield return new WaitForSeconds(startup);
             
             //remove hitboxes or set invul as true for now.
@@ -71,14 +71,11 @@ public class Teleport : CharacterType{
         }
     }
 
-    private IEnumerator SecondaryA(float joyX, float joyY)
+    private IEnumerator SecondaryA()
     {
         if (neutral)
         {
             neutral = false;
-
-            //get angle of strike
-            float angle = Mathf.Atan2(joyY, joyX) * Mathf.Rad2Deg - 90f;
 
             float startup = .1f;
             float active = .4f;
@@ -101,20 +98,19 @@ public class Teleport : CharacterType{
         }
     }
 
-    private IEnumerator TertiaryA(float joyX, float joyY)
+    private IEnumerator TertiaryA()
     {
         if (neutral)
         {
             //get aim dir
             neutral = false;
-            float angle = Mathf.Atan2(joyY, joyX) * Mathf.Rad2Deg - 90f;
 
             float startup = .1f;
             yield return new WaitForSeconds(startup);
 
             //create projectile and set its position and parents
             GameObject bullet = Instantiate(projectile, transform);
-            bullet.transform.localEulerAngles = new Vector3(0, 0, angle);
+            bullet.transform.eulerAngles = rotationTrans.eulerAngles;
             bullet.transform.SetParent(null);
             neutral = true;
             yield return null;

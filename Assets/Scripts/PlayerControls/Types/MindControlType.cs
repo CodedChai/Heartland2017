@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hypno : CharacterType {
-    //lol
+public class MindControlType : CharacterType {
+
 	// Use this for initialization
 	void Start () {
-		// I prefer the name puppet master
+		
 	}
 	
 	// Update is called once per frame

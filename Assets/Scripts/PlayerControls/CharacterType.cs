@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterType : MonoBehaviour {
     //basically an abstract class.
-	protected int hp =0;
+	protected int hp = 0;
 	protected float movespeed=0;
 
 	//gets the max HP. Current HP is stored in the player controller.
@@ -17,11 +17,11 @@ public class CharacterType : MonoBehaviour {
 	{
 		return movespeed;
 	}
-    virtual public void Primary(float joyX, float joyY) { }
 
-	virtual public void Secondary(float joyX, float joyY )
-	{	}
+    virtual public void Primary() { }
 
-    virtual public void Tertiary(float joyX, float joyY) { }
+	virtual public void Secondary() { }
+
+    virtual public void Tertiary() { }
 
 }
