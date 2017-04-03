@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ConnorsPublicTestScene.unity
+- path: Assets/Scenes/alvaro's secret test scene.unity
   isLoaded: 1
   isActive: 1

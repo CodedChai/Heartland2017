@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public CharacterType characterType;//archetype/movesets
+    public GameObject og;
     float speed;
     int maxHP;
     public int hp;
@@ -54,7 +55,14 @@ public class PlayerController : MonoBehaviour {
         {
             if (characterType.name != "Hypno")
             {
-                //go back to default char
+                PlayerController np = og.GetComponent<PlayerController>();
+                np.enabled = true;
+                characterType.rotationTrans.SetActive(false);
+                np.characterType.rotationTrans.SetActive(true);
+                GetComponent<Rigidbody2D>().isKinematic = true;
+                GetComponent<BoxCollider2D>().enabled = false;
+
+                Destroy(this);
             }
             else
             {
@@ -74,11 +82,23 @@ public class PlayerController : MonoBehaviour {
             GameObject next = bullet.GetComponent<MindProjectile>().nextHost;
             next.AddComponent<PlayerController>();
             PlayerController np = next.GetComponent<PlayerController>();
+       
             np.characterType = next.GetComponent<CharacterType>();
+
+            //turn aiming thingyf rom here to there
+            np.characterType.rotationTrans.gameObject.SetActive(true);
+            characterType.rotationTrans.gameObject.SetActive(false);
+            np.og = og;
+            np.hypno = hypno;
+            next.GetComponent<PathFollower>().enabled = false;
+            next.GetComponent<BasicAI>().enabled = false;
+            next.tag = "Player";
+            
+
             np.name = name;
             np.health = health;
             Destroy(bullet);
-            Destroy(this);
+            this.enabled = false;
 
 
         }
@@ -93,10 +113,10 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(startup);
 
         //create projectile and set its position and parents
-        Destroy(bullet);
+        DestroyImmediate(bullet, true);
         bullet = Instantiate(hypno, transform);
         
-        bullet.transform.eulerAngles = characterType.rotationTrans.eulerAngles;
+        bullet.transform.eulerAngles = characterType.rotationTrans.transform.eulerAngles;
         bullet.transform.SetParent(null);
         yield return null;
 

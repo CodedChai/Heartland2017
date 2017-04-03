@@ -7,7 +7,7 @@ public class CharacterType : MonoBehaviour {
     public string name;
 	protected int hp = 0;
 	protected float movespeed=0;
-    public Transform rotationTrans;
+    public GameObject rotationTrans;
 
 
     //gets the max HP. Current HP is stored in the player controller.
