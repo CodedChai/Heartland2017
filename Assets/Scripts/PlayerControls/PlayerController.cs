@@ -128,8 +128,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void UpdateAnimationVars() {
-      //animator.SetFloat("x_mov", speed * Input.GetAxis("Horizontal"));
-      //animator.SetFloat("y_mov", speed * Input.GetAxis("Vertical"));
+      animator.SetFloat("x_mov", speed * Input.GetAxis("Horizontal"));
+      animator.SetFloat("y_mov", speed * Input.GetAxis("Vertical"));
     }
 
 
