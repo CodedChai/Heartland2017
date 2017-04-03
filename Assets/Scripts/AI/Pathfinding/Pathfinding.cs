@@ -16,9 +16,10 @@ public class Pathfinding : MonoBehaviour {
 
     void Update()
     {
-        
+        if(seeker != null && target != null && Vector2.Distance(seeker.position, target.position) > Vector2.kEpsilon)
+        {
             FindPath(seeker.position, target.position);
-        
+        }
     }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
@@ -39,6 +40,10 @@ public class Pathfinding : MonoBehaviour {
             // Reached Destination
             if (currentNode == targetNode)
             {
+                if(startNode == targetNode)
+                {
+                    return;
+                }
                 RetracePath(startNode, targetNode);
                 return;
             }

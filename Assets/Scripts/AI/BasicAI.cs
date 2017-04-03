@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class BasicAI : MonoBehaviour {
-
     public GameObject patrolPointsParent;
     public Transform[] patrolPoints;
     public int state = 0; // 0 is patrol, 1 is path to player, 2 is attack, 3 is search for player
     public bool updatePatrol = true;
-
+    public float giveUpTime = 4f;
     public GameObject enemyController;
     private PathFollower pathFollower;
     public GameObject player;
@@ -19,6 +19,9 @@ public class BasicAI : MonoBehaviour {
     public bool patrolReverse = false;
     public float attackDistance = .05f;
     private Transform myTrans;
+    public bool updateSearch = true;
+    public float searchStandInPlaceTime = 3f;
+    public Stopwatch sw;
 
     public float patrolStationaryTime = 1f;
 
@@ -37,22 +40,52 @@ public class BasicAI : MonoBehaviour {
         myTrans = transform;
         // enemyController = GetComponentInParent<GameObject>();
         pathfinding.target = patrolPoints[currentPatrolPoint];
+        sw = new Stopwatch();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update () {
+ 
         StateHandler();
 	}
 
 
     void StateHandler()
     {
+        // This will change state from patrol or search to chase
         if ((state == 0 || state == 3) && SeePlayer())
         {
             state = 1;
             pathFollower.shouldMove = true;
         }
 
+        // This keeps track of vision with player, will change state to search
+        if(state == 1 || state == 3)
+        {
+            if (sw.Elapsed.Seconds == 0)
+            {
+                if (!PlayerVision())
+                {
+                    sw.Start();
+                }
+            }
+            else if (sw.Elapsed.Seconds > giveUpTime)
+            {
+                sw.Stop();
+                sw.Reset();
+                if (!PlayerVision())
+                {
+                    // Set the seeking transform to player's last known location and whatnot
+                    Transform lastKnown = new GameObject("Player's Last Known Location").transform;
+                    lastKnown.position = pathfinding.target.position;
+                    pathfinding.target = lastKnown;
+                    state = 3;
+                }
+
+            }
+        }
+        
         switch (state)
         {
             case 0:
@@ -86,6 +119,25 @@ public class BasicAI : MonoBehaviour {
         pathFollower.shouldMove = false;
         yield return new WaitForSeconds(pauseLength);
         pathFollower.shouldMove = true;
+        yield return null;
+    }
+
+    IEnumerator SearchWait(float pauseLength)
+    {
+        updateSearch = false;
+        yield return new WaitForSeconds(pauseLength);
+        updateSearch = true;
+        if (PlayerVision())
+        {
+            print("Found you!! Time to chase.");
+            state = 1;
+            pathfinding.target = player.transform;
+        } else
+        {
+            print("Can't find them, guess I should head back to my post.");
+            state = 0;
+            DestroyImmediate(GameObject.Find("Player's Last Known Location"));
+        }
         yield return null;
     }
 
@@ -148,17 +200,47 @@ public class BasicAI : MonoBehaviour {
 
     void Search()
     {
+        if (updateSearch) {
+            if (Vector2.Distance(pathFollower.targetWayPoint, myTrans.position) < .01f)
+            {
+                StartCoroutine(SearchWait(searchStandInPlaceTime));
+            }
 
+        }
+    }
+
+    bool PlayerVision()
+    {
+        Vector3 visionVec = (player.transform.position - myTrans.position).normalized;
+        UnityEngine.Debug.DrawRay(myTrans.position, visionVec * 10f, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(myTrans.position, visionVec, Mathf.Infinity);
+        if(hit.collider != null && !hit.collider.CompareTag("Player"))
+        {
+            print(hit.collider.tag);
+            // WE LOST VISION OF THE PLAYER
+            print("I can't see the target.");
+            return false;
+        } else if(hit.collider != null && hit.collider.CompareTag("Player"))
+        {
+            print("I still have eyes on the target.");
+            if(pathfinding.target != player.transform)
+            {
+                pathfinding.target = player.transform;
+            }
+            return true;
+        }
+        // sw.Start(); when lost vision, stop calling this method, once sw.time > giveUpTime call playervision again and if it can still see it then proceed as normal but if it can't see it then go to current position of player, stop moving then go back to patrol
+        return false;
     }
 
     bool SeePlayer()
     {
         bool playerSeen = false;
-        Debug.DrawRay(myTrans.position, pathFollower.dirVec * lineOfSite, Color.cyan);
-        Debug.DrawRay(myTrans.position - new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        Debug.DrawRay(myTrans.position + new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        Debug.DrawRay(myTrans.position - new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        Debug.DrawRay(myTrans.position + new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position, pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
 
         hit0 = Physics2D.Raycast(myTrans.position, pathFollower.dirVec, lineOfSite);
         hit1 = Physics2D.Raycast(myTrans.position - new Vector3(.4f, .4f, 0f), pathFollower.dirVec, lineOfSite);
