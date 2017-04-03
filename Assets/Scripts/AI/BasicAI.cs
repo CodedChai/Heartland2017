@@ -31,6 +31,8 @@ public class BasicAI : MonoBehaviour {
     RaycastHit2D hit3;
     RaycastHit2D hit4;
 
+    private Transform lastKnown = null;
+
     // Use this for initialization
     void Start () {
         patrolPoints = patrolPointsParent.GetComponentsInChildren<Transform>();
@@ -74,10 +76,10 @@ public class BasicAI : MonoBehaviour {
             {
                 sw.Stop();
                 sw.Reset();
-                if (!PlayerVision())
+                if (!PlayerVision() && lastKnown == null)
                 {
                     // Set the seeking transform to player's last known location and whatnot
-                    Transform lastKnown = new GameObject("Player's Last Known Location").transform;
+                    lastKnown = new GameObject("Player's Last Known Location").transform;
                     lastKnown.position = pathfinding.target.position;
                     pathfinding.target = lastKnown;
                     state = 3;
@@ -136,6 +138,7 @@ public class BasicAI : MonoBehaviour {
         {
             print("Can't find them, guess I should head back to my post.");
             state = 0;
+            lastKnown = null;
             DestroyImmediate(GameObject.Find("Player's Last Known Location"));
         }
         yield return null;
