@@ -279,8 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Fred
+  rotationTrans: {fileID: 4800377167747064}
   rot: {fileID: 114116298861647482}
-  rotationObj: {fileID: 0}
+  rotationObj: {fileID: 4800377167747064}
 --- !u!114 &114938807638265098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,8 +295,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: {fileID: 0}
   hp: 1
+  hypno: {fileID: 0}
   name: {fileID: 0}
   health: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!114 &114959633725718592
 MonoBehaviour:
   m_ObjectHideFlags: 1
