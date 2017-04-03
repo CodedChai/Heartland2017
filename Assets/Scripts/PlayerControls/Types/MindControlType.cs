@@ -7,14 +7,19 @@ public class MindControlType : CharacterType {
     public RotationHandler rot;
     public Transform rotationObj;
 
-	// Use this for initialization
-	void Start () {
-        rot = GetComponentInChildren<RotationHandler>();
-        rotationObj = rot.GetComponent<Transform>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+        movespeed = 3;
+
+        name = "Hypno";
+        //overwrite movespeed and hp here.
+        hp = 4;
+        //setting melee
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

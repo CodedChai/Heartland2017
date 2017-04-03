@@ -6,12 +6,12 @@ public class TeleportType : CharacterType{
     bool neutral = true;//check if player can do stuff
 
     public Attack melee;//the script associated w/ the melee attack
-    public Transform rotationTrans;
     public GameObject projectile;//the projectile.
 
 	// Use this for initialization
 	void Start()
     {
+        name = "Phil";
         //overwrite movespeed and hp here.
         movespeed = 3;
         hp = 4;

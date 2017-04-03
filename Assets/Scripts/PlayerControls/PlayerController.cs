@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -8,23 +9,30 @@ public class PlayerController : MonoBehaviour {
     float speed;
     int maxHP;
     public int hp;
+    public GameObject hypno;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
+
+    public Text name;
+    public Text health;
+    public GameObject bullet;
 
     private Animator animator;
 
     // Use this for initialization
 	void Start ()
     {
+        if (characterType == null)
+        {
+            characterType = GetComponent<MindControlType>();
+        }
         animator = GetComponent<Animator>();
         speed = characterType.GetMoveSpeed();
         maxHP = characterType.GetHP();
         hp = maxHP;
         prevPos = transform.position;
-        if(characterType == null)
-        {
-            characterType = GetComponent<MindControlType>();
-        }
+
         hp = maxHP;
+        name.text = characterType.name;
     }
 
 	// Update is called once per frame
@@ -34,16 +42,69 @@ public class PlayerController : MonoBehaviour {
         {
             characterType.Primary();
         }
-        else if(Input.GetButtonDown("Fire2"))
+        else if (Input.GetButtonDown("Fire2"))
         {
             characterType.Secondary();
         }
-        else if(Input.GetButtonDown("Fire3"))
+        else if (Input.GetButtonDown("Fire3"))
         {
             characterType.Tertiary();
         }
+        else if (Input.GetButtonDown("Hypno"))
+        {
+            if (characterType.name != "Hypno")
+            {
+                //go back to default char
+            }
+            else
+            {
+                StartCoroutine(Hypno());
+            }
+        }
+
+        UpdateUI();
+        CheckState();
+
+    }
+
+    void CheckState()
+    {
+        if(bullet != null && bullet.GetComponent<MindProjectile>().nextHost != null)
+        {
+            GameObject next = bullet.GetComponent<MindProjectile>().nextHost;
+            next.AddComponent<PlayerController>();
+            PlayerController np = next.GetComponent<PlayerController>();
+            np.characterType = next.GetComponent<CharacterType>();
+            np.name = name;
+            np.health = health;
+            Destroy(bullet);
+            Destroy(this);
 
 
+        }
+    }
+
+    private IEnumerator Hypno()
+    {
+
+        //get aim dir
+
+        float startup = .1f;
+        yield return new WaitForSeconds(startup);
+
+        //create projectile and set its position and parents
+        Destroy(bullet);
+        bullet = Instantiate(hypno, transform);
+        
+        bullet.transform.eulerAngles = characterType.rotationTrans.eulerAngles;
+        bullet.transform.SetParent(null);
+        yield return null;
+
+    }
+
+    void UpdateUI()
+    {
+        health.text = hp+ "/" + maxHP;
     }
 
     // Update movement on physics due to collisions
@@ -67,8 +128,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void UpdateAnimationVars() {
-      animator.SetFloat("x_mov", speed * Input.GetAxis("Horizontal"));
-      animator.SetFloat("y_mov", speed * Input.GetAxis("Vertical"));
+      //animator.SetFloat("x_mov", speed * Input.GetAxis("Horizontal"));
+      //animator.SetFloat("y_mov", speed * Input.GetAxis("Vertical"));
     }
 
 
