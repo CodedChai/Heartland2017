@@ -203,7 +203,7 @@ MonoBehaviour:
   direction: 0
   targetWayPoint: {x: 0, y: 0, z: 0}
   dirVec: {x: 0, y: 0, z: 0}
-  isPatroling: 1
+  shouldMove: 1
   speed: 1
   id: 0
   pathfinder: {fileID: 114839425806476384}
@@ -221,7 +221,8 @@ MonoBehaviour:
   patrolPointsParent: {fileID: 1528299676042122}
   patrolPoints: []
   state: 0
-  update: 1
+  updatePatrol: 1
+  giveUpTime: 4
   enemyController: {fileID: 1866910023383712}
   player: {fileID: 0}
   pathfinding: {fileID: 0}
@@ -229,6 +230,10 @@ MonoBehaviour:
   lineOfSite: 5
   currentPatrolPoint: 1
   patrolReverse: 0
+  attackDistance: 0.05
+  updateSearch: 1
+  searchStandInPlaceTime: 3
+  patrolStationaryTime: 1
 --- !u!114 &114839305573483876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,7 +248,7 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 30, y: 10}
+  gridWorldSize: {x: 30, y: 30}
   nodeRadius: 0.25
 --- !u!114 &114839425806476384
 MonoBehaviour:
