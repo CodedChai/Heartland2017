@@ -13,8 +13,8 @@ public class TeleportType : CharacterType{
     {
         name = "Phil";
         //overwrite movespeed and hp here.
-        movespeed = 3;
-        hp = 4;
+        movespeed = 2;
+        hp = 2;
         //setting melee
     }
 

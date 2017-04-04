@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
     public CharacterType characterType;//archetype/movesets
     public GameObject og;
     float speed;
-    int maxHP;
     public int hp;
     public GameObject hypno;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
@@ -28,11 +27,9 @@ public class PlayerController : MonoBehaviour {
         }
         animator = GetComponent<Animator>();
         speed = characterType.GetMoveSpeed();
-        maxHP = characterType.GetHP();
-        hp = maxHP;
+        print(speed);
         prevPos = transform.position;
-
-        hp = maxHP;
+        hp = characterType.GetHP();
         name.text = characterType.name;
     }
 
@@ -61,6 +58,8 @@ public class PlayerController : MonoBehaviour {
                 np.characterType.rotationTrans.SetActive(true);
                 GetComponent<Rigidbody2D>().isKinematic = true;
                 GetComponent<BoxCollider2D>().enabled = false;
+                np.name = name;
+                np.name.text = np.GetComponent<CharacterType>().name;
 
                 Destroy(this);
             }
@@ -98,7 +97,7 @@ public class PlayerController : MonoBehaviour {
             np.name = name;
             np.health = health;
             Destroy(bullet);
-            this.enabled = false;
+            enabled = false;
 
 
         }
@@ -124,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateUI()
     {
-        health.text = hp+ "/" + maxHP;
+        health.text = hp+"";
     }
 
     // Update movement on physics due to collisions

@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterType : MonoBehaviour {
     //basically an abstract class.
     public string name;
-	protected int hp = 0;
-	protected float movespeed=0;
+	protected int hp=4;
+	protected float movespeed=3;
     public GameObject rotationTrans;
 
 
@@ -20,6 +20,16 @@ public class CharacterType : MonoBehaviour {
 	{
 		return movespeed;
 	}
+
+    public int DealDamage(int damage)
+    {
+        hp -= damage;
+        if(hp < 1)
+        {
+            Destroy(gameObject);
+        }
+        return hp;
+    }
 
     virtual public void Primary() { }
 

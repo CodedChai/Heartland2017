@@ -5,14 +5,18 @@ using UnityEngine;
 public class ProjectileObject : MonoBehaviour {
     public float speed;
     public float lifespan;
-    public float damage;
+    public int damage;
     public float knockback;
     public float hitstun;//idk if we're going to use hitstun but it can't hurt
     float time = 0;
-	// Use this for initialization
+    // Use this for initialization
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    private void Start()
+    {
+        transform.Translate(0, .65F, 0, Space.Self);//move fwd to not hit myself
+    }
+    void Update ()
     {
         //track time until we break the projectile
         time += Time.deltaTime;
@@ -26,12 +30,11 @@ public class ProjectileObject : MonoBehaviour {
     //break stuff if the move is active.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag != "Player")
+        if(collision.GetComponent<CharacterType>())
         {
-            //deal damage and stuff
-            print("BANG!");
-            Destroy(gameObject);
+            collision.GetComponent<CharacterType>().DealDamage(damage);
 
         }
+        Destroy(gameObject);
     }
 }
