@@ -35,7 +35,9 @@ public class ProjectileObject : MonoBehaviour {
             if (collision.GetComponent<CharacterType>())
             {
                 collision.GetComponent<CharacterType>().DealDamage(damage);
-
+                transform.position = collision.transform.position;
+                transform.Translate(0, knockback, 0, Space.Self);
+                collision.transform.position = transform.position;
             }
 
             Destroy(gameObject);
