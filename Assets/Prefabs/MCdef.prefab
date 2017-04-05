@@ -182,7 +182,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -278,10 +278,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d02cb903d7729468e2ea8e354733ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Fred
-  rotationTrans: {fileID: 4800377167747064}
+  name: Hypno
+  rotationTrans: {fileID: 1025079425944398}
+  dead: 0
   rot: {fileID: 114116298861647482}
   rotationObj: {fileID: 4800377167747064}
+  melee: {fileID: 114959633725718592}
+  neutral: 1
 --- !u!114 &114938807638265098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,8 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b6a46e1aefe984584a758c3a0b64af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: {fileID: 0}
-  og: {fileID: 0}
+  characterType: {fileID: 114501484268098632}
+  og: {fileID: 1029065091158498}
   hp: 1
   hypno: {fileID: 1319515948851874, guid: 2797efba245810843a5c66206664c901, type: 2}
   name: {fileID: 0}
@@ -314,6 +317,7 @@ MonoBehaviour:
   damage: 2
   knockback: 0
   hitstun: 0
+  hits: []
   active: 0
 --- !u!120 &120321319018768988
 LineRenderer:

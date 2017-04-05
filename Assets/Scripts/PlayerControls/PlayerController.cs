@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour {
         }
         animator = GetComponent<Animator>();
         speed = characterType.GetMoveSpeed();
-        print(speed);
         prevPos = transform.position;
         hp = characterType.GetHP();
         name.text = characterType.name;

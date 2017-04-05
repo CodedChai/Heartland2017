@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileObject : MonoBehaviour {
+    public Transform og;
     public float speed;
     public float lifespan;
     public int damage;
@@ -14,7 +15,6 @@ public class ProjectileObject : MonoBehaviour {
     // Update is called once per frame
     private void Start()
     {
-        transform.Translate(0, .65F, 0, Space.Self);//move fwd to not hit myself
     }
     void Update ()
     {
@@ -30,11 +30,15 @@ public class ProjectileObject : MonoBehaviour {
     //break stuff if the move is active.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<CharacterType>())
+        if (collision.transform != og)
         {
-            collision.GetComponent<CharacterType>().DealDamage(damage);
+            if (collision.GetComponent<CharacterType>())
+            {
+                collision.GetComponent<CharacterType>().DealDamage(damage);
 
+            }
+
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

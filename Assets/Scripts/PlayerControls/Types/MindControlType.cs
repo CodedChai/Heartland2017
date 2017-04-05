@@ -6,6 +6,8 @@ public class MindControlType : CharacterType {
 
     public RotationHandler rot;
     public Transform rotationObj;
+    public Attack melee;
+    public bool neutral = true;
 
     // Use this for initialization
     void Start()
@@ -18,8 +20,36 @@ public class MindControlType : CharacterType {
         //setting melee
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    public override void Secondary()
+    {
+        StartCoroutine(SecondaryA());
+    }
+
+
+    private IEnumerator SecondaryA()
+    {
+        if (neutral)
+        {
+            neutral = false;
+
+            float startup = .1f;
+            float active = .4f;
+            float recovery = .2f;
+            yield return new WaitForSeconds(startup);
+
+            //turn hitbox on.
+            melee.Activate();
+            yield return new WaitForSeconds(active);
+
+            //hitbox off
+            melee.Deactivate();
+            yield return new WaitForSeconds(recovery);
+            neutral = true;
+            yield return null;
+        }
+        else
+        {
+            yield return null;
+        }
+    }
 }

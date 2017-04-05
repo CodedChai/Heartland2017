@@ -118,6 +118,7 @@ public class TeleportType : CharacterType{
 
             //create projectile and set its position and parents
             GameObject bullet = Instantiate(projectile, transform);
+            bullet.GetComponent<ProjectileObject>().og = transform;
             bullet.transform.eulerAngles = rotationTrans.transform.eulerAngles;
             bullet.transform.SetParent(null);
             neutral = true;
