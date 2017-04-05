@@ -22,9 +22,17 @@ public class MindControlType : CharacterType {
 
     public override void Die()
     {
-        print("ded");
-        GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();
 
+        StartCoroutine(Reload());
+    }
+
+    private IEnumerator Reload()
+    {
+        print("ded");
+        GameObject.Find("Canvas").GetComponentInChildren<FadeIn>().Exit();
+        yield return new WaitForSeconds(.9f);
+        GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();
+        yield return null;
     }
 
     public override void Secondary()
