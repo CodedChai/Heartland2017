@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114557338743652482}
   - component: {fileID: 61279190134444848}
   m_Layer: 0
-  m_Name: BaseProjectile
+  m_Name: GunnerBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,10 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079f10e1e92212f4cb1799a36aa4342a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.79
+  speed: 8
   lifespan: 39.45
-  damage: 2
-  knockback: 0
+  damage: 5
+  knockback: 3
   hitstun: 0
 --- !u!212 &212937835204796034
 SpriteRenderer:

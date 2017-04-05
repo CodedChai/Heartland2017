@@ -40,10 +40,11 @@ public class MindProjectile : MonoBehaviour
             }
             else
             {
-                print("WAH!");
                 Destroy(gameObject);
             }
 
         }
     }
+
+
 }

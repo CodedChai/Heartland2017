@@ -13,8 +13,8 @@ public class TeleportType : CharacterType{
     {
         name = "Phil";
         //overwrite movespeed and hp here.
-        movespeed = 3;
-        hp = 4;
+        movespeed = 2;
+        hp = 2;
         //setting melee
     }
 
@@ -53,13 +53,13 @@ public class TeleportType : CharacterType{
              LayerMask mask = 1<<8;
 
             //set up teleport point
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, rotationTrans.up, distance, mask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, rotationTrans.transform.up, distance, mask);
             if (hit.collider != null)
             {
                 distance = Mathf.Abs(hit.point.y - transform.position.y);
             }
 
-            Vector3 futPos = transform.position +rotationTrans.up * distance;
+            Vector3 futPos = transform.position +rotationTrans.transform.up * distance;
 
             yield return new WaitForSeconds(startup);
             //remove hitboxes or set invul as true for now.
@@ -118,7 +118,8 @@ public class TeleportType : CharacterType{
 
             //create projectile and set its position and parents
             GameObject bullet = Instantiate(projectile, transform);
-            bullet.transform.eulerAngles = rotationTrans.eulerAngles;
+            bullet.GetComponent<ProjectileObject>().og = transform;
+            bullet.transform.eulerAngles = rotationTrans.transform.eulerAngles;
             bullet.transform.SetParent(null);
             neutral = true;
             yield return null;

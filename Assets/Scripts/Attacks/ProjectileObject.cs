@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileObject : MonoBehaviour {
+    public Transform og;
     public float speed;
     public float lifespan;
-    public float damage;
+    public int damage;
     public float knockback;
     public float hitstun;//idk if we're going to use hitstun but it can't hurt
     float time = 0;
-	// Use this for initialization
+    // Use this for initialization
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    private void Start()
+    {
+    }
+    void Update ()
     {
         //track time until we break the projectile
         time += Time.deltaTime;
@@ -26,12 +30,17 @@ public class ProjectileObject : MonoBehaviour {
     //break stuff if the move is active.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag != "Player")
+        if (collision.transform != og)
         {
-            //deal damage and stuff
-            print("BANG!");
-            Destroy(gameObject);
+            if (collision.GetComponent<CharacterType>())
+            {
+                collision.GetComponent<CharacterType>().DealDamage(damage);
+                transform.position = collision.transform.position;
+                transform.Translate(0, knockback, 0, Space.Self);
+                collision.transform.position = transform.position;
+            }
 
+            Destroy(gameObject);
         }
     }
 }
