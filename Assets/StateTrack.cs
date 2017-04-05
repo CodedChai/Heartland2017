@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,13 +20,14 @@ public class StateTrack : MonoBehaviour {
         GameObject[] posers = GameObject.FindGameObjectsWithTag("Unique");
         foreach(GameObject poser in posers)
         {
-            if(poser != this.gameObject)
+            if(poser != gameObject)
             {
                 Destroy(poser);
             }
         }
         DontDestroyOnLoad(gameObject);
 
+        Load();
 
     }
 
@@ -37,6 +41,8 @@ public class StateTrack : MonoBehaviour {
             if (curLevel == maxUnlocked)
             {
                 maxUnlocked++;
+                Save();
+
             }
             curLevel++;
             LoadLevel(curLevel);
@@ -79,4 +85,53 @@ public class StateTrack : MonoBehaviour {
             Reload();
         }
 	}
+
+    public string Save()
+    {
+        return Save("save.dat");
+    }
+
+    public string Save(string name)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/" + name);
+        LoadData ld = new LoadData();
+        ld.Save(maxUnlocked);
+        bf.Serialize(file, ld);
+        file.Close();
+        return name;
+    }
+
+    public void Load()
+    {
+        Load("save.dat");
+    }
+
+    public void Load(string name)
+    {
+        if(File.Exists(Application.persistentDataPath +"/"+name))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/" + name, FileMode.Open);
+            LoadData load = (LoadData)bf.Deserialize(file);
+            maxUnlocked = load.maxLevel;
+            file.Close();
+        }
+        else
+        {
+            Save();
+            Load();
+        }
+    }
+}
+
+[Serializable]
+class LoadData
+{
+    public int maxLevel;
+
+    public void Save(int level)
+    {
+        maxLevel = level;
+    }
 }
