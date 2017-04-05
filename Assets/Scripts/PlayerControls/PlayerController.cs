@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour {
                 np.name = name;
                 np.name.text = np.GetComponent<CharacterType>().name;
 
+                characterType.dead = true;//it should kill itself
                 Destroy(this);
             }
             else
