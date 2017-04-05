@@ -20,10 +20,19 @@ public class MindControlType : CharacterType {
         //setting melee
     }
 
+    public override void Die()
+    {
+        print("ded");
+        GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();
+
+    }
+
     public override void Secondary()
     {
         StartCoroutine(SecondaryA());
     }
+
+
 
 
     private IEnumerator SecondaryA()

@@ -29,9 +29,14 @@ public class CharacterType : MonoBehaviour {
         {
             dead = true;
             //comment this out later to allow for an animation-probably in a coroutine, then destroy it. FOr now, the dead = true thing is mostly useless.
-            Destroy(gameObject);
+            Die();
         }
         return hp;
+    }
+
+    virtual public void Die()
+    {
+        GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();
     }
 
     virtual public void Primary() { }

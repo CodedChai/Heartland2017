@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/alvaro's secret test scene.unity
+    guid: 732ecd91581654943ae5ea92cb2be2bd
+  - enabled: 1
+    path: Assets/Scenes/ConnorsPublicTestScene.unity
+    guid: 0428f844d7e3b83439274d4d0ba63e7b
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 00000000000000000000000000000000
