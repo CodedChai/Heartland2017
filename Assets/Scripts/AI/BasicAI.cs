@@ -59,6 +59,7 @@ public class BasicAI : MonoBehaviour {
         if ((state == 0 || state == 3) && SeePlayer())
         {
             state = 1;
+            pathFollower.speed = 3;
             pathFollower.shouldMove = true;
         }
 
@@ -83,6 +84,8 @@ public class BasicAI : MonoBehaviour {
                     lastKnown.position = pathfinding.target.position;
                     pathfinding.target = lastKnown;
                     state = 3;
+                    pathFollower.speed = 1.5f;
+
                 }
 
             }
@@ -133,11 +136,13 @@ public class BasicAI : MonoBehaviour {
         {
             print("Found you!! Time to chase.");
             state = 1;
+            pathFollower.speed = 3f;
             pathfinding.target = player.transform;
         } else
         {
             print("Can't find them, guess I should head back to my post.");
             state = 0;
+            pathFollower.speed = 1f;
             lastKnown = null;
             DestroyImmediate(GameObject.Find("Player's Last Known Location"));
         }
@@ -197,6 +202,7 @@ public class BasicAI : MonoBehaviour {
         {
             print("I should chase.");
             state = 1;
+            pathFollower.speed = 3;
             pathFollower.shouldMove = true;
         }
     }
