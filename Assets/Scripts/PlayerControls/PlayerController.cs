@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator Hypno()
     {
+        print("Trying to hypno");
 
         //get aim dir
 
