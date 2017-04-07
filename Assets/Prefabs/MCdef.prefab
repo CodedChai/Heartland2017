@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  knockback: 0
+  knockback: 1
   hitstun: 0
   hits: []
   active: 0
