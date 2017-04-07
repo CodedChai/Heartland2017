@@ -76,11 +76,11 @@ public class StateTrack : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("l"))
+		if(Input.GetKeyDown("p"))
         {
             LoadLevel();
         }
-        if (Input.GetKeyDown("k"))
+        if (Input.GetKeyDown("o"))
         {
             Reload();
         }
