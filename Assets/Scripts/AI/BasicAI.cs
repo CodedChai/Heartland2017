@@ -30,6 +30,8 @@ public class BasicAI : MonoBehaviour {
     RaycastHit2D hit2;
     RaycastHit2D hit3;
     RaycastHit2D hit4;
+    RaycastHit2D hit5;
+    RaycastHit2D hit6;
 
     private Transform lastKnown = null;
 
@@ -250,13 +252,16 @@ public class BasicAI : MonoBehaviour {
         UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
         UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
         UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(-.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(-.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
 
         hit0 = Physics2D.Raycast(myTrans.position, pathFollower.dirVec, lineOfSite);
         hit1 = Physics2D.Raycast(myTrans.position - new Vector3(.4f, .4f, 0f), pathFollower.dirVec, lineOfSite);
         hit2 = Physics2D.Raycast(myTrans.position + new Vector3(.4f, .4f, 0f), pathFollower.dirVec, lineOfSite);
         hit3 = Physics2D.Raycast(myTrans.position - new Vector3(.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
         hit4 = Physics2D.Raycast(myTrans.position + new Vector3(.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
-
+        hit5 = Physics2D.Raycast(myTrans.position - new Vector3(-.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
+        hit6 = Physics2D.Raycast(myTrans.position + new Vector3(-.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
         playerSeen = CheckCollisions();
 
         return playerSeen;
@@ -305,6 +310,24 @@ public class BasicAI : MonoBehaviour {
             {
                 print("See player");
                 pathfinding.target = hit4.transform;
+                return true;
+            }
+        }
+        if (hit5.collider != null)
+        {
+            if (hit5.collider.CompareTag("Player"))
+            {
+                print("See player");
+                pathfinding.target = hit5.transform;
+                return true;
+            }
+        }
+        if (hit6.collider != null)
+        {
+            if (hit6.collider.CompareTag("Player"))
+            {
+                print("See player");
+                pathfinding.target = hit6.transform;
                 return true;
             }
         }
