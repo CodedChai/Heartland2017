@@ -24,6 +24,8 @@ public class BasicAI : MonoBehaviour {
     public Stopwatch sw;
     public RotationHandler rotHandler;
     public CharacterType charType;
+    public bool updateAttack = true;
+    public float attackWait = .33f;
 
     public float patrolStationaryTime = 1f;
 
@@ -48,11 +50,12 @@ public class BasicAI : MonoBehaviour {
         pathfinding.target = patrolPoints[currentPatrolPoint];
         sw = new Stopwatch();
         player = GameObject.Find("Player");
+        rotHandler = GetComponentInChildren<RotationHandler>();
+        charType = GetComponent<CharacterType>();
     }
 
     // Update is called once per frame
     void Update () {
- 
         StateHandler();
 	}
 
@@ -130,6 +133,13 @@ public class BasicAI : MonoBehaviour {
         pathFollower.shouldMove = true;
         yield return null;
     }
+    IEnumerator PauseAttack(float pauseLength)
+    {
+        updateAttack = false;
+        yield return new WaitForSeconds(pauseLength);
+        updateAttack = true;
+        yield return null;
+    }
 
     IEnumerator SearchWait(float pauseLength)
     {
@@ -191,7 +201,17 @@ public class BasicAI : MonoBehaviour {
     void Chase()
     {
         print("Chasing");
-
+        if(charType.isSpecial && Random.Range(0,1) > .95f)
+        {
+            rotHandler.angle = AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f;
+            rotHandler.transform.localEulerAngles = new Vector3(0f, 0f, rotHandler.angle);
+            charType.Primary();     // Teleport
+        } else if (charType.isRanged && Random.Range(0, 1) > .95f)
+        {
+            rotHandler.angle = AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f;
+            rotHandler.transform.localEulerAngles = new Vector3(0f, 0f, rotHandler.angle);
+            charType.Tertiary();    // Do a ranged attack
+        }
         if(Vector2.Distance(pathfinding.target.position, myTrans.position) < attackDistance)
         {
             print("I should attack.");
@@ -200,10 +220,51 @@ public class BasicAI : MonoBehaviour {
         }
     }
 
+    private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
+    {
+        Vector2 diference = vec2 - vec1;
+        float sign = (vec2.y < vec1.y) ? -1.0f : 1.0f;
+        return Vector2.Angle(Vector2.right, diference) * sign;
+    }
+
     void Attack()
     {
-        // Attack the player
-        charType.Primary();
+        if (updateAttack)
+        {
+            // Attack the player
+            // For melee type
+            rotHandler.angle = AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f;
+            rotHandler.transform.localEulerAngles = new Vector3(0f, 0f, rotHandler.angle);
+            if (!charType.isSpecial && charType.isMelee && !charType.isRanged)
+            {
+                if (Time.time % 10 > 5f)
+                {
+                    charType.Secondary();
+                }
+                else
+                {
+                    charType.Tertiary();
+                }
+            } // For ranged type
+            else if (!charType.isSpecial && charType.isMelee && charType.isRanged)
+            {
+                charType.Secondary();
+            }
+            // For teleport type
+            else if (charType.isSpecial && charType.isMelee && charType.isRanged)
+            {
+                if (Time.time % 10 > 7f)
+                {
+                    charType.Primary();
+                }
+                else if (Time.time % 10 > 6f)
+                {
+                    charType.Secondary();
+                }
+            }
+            StartCoroutine(PauseAttack(attackWait));
+        }
+        
 
         // If we're too far away from the player go back and chase them again
         if (Vector2.Distance(pathfinding.target.position, myTrans.position) > attackDistance)

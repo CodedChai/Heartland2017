@@ -8,10 +8,6 @@ public class TeleportType : CharacterType{
     public Attack melee;//the script associated w/ the melee attack
     public GameObject projectile;//the projectile.
 
-    public bool isSpecial = true;
-    public bool isMelee = true;
-    public bool isRanged = true;
-
 	// Use this for initialization
 	void Start()
     {
@@ -19,24 +15,30 @@ public class TeleportType : CharacterType{
         //overwrite movespeed and hp here.
         movespeed = 2;
         hp = 2;
-        //setting melee
+        //setting tele
+        isSpecial = true;
+        isMelee = true;
+        isRanged = true;
     }
 
     //Primary attack. A-Teleports.
     override public void Primary()
     {
+        print("Special teleport");
         StartCoroutine(PrimaryA());
     }
 
     //secondary attack, melee hit. B
     public override void Secondary()
     {
+        print("Special melee attack");
         StartCoroutine(SecondaryA());
     }
 
     //thrid attack, the projectile. Y
     public override void Tertiary()
     {
+        print("Special projectile attack");
         StartCoroutine(TertiaryA());
     }
 

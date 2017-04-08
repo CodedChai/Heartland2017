@@ -8,6 +8,9 @@ public class CharacterType : MonoBehaviour {
 	protected int hp=4;
 	protected float movespeed=3;
     public GameObject rotationTrans;
+    public bool isSpecial = false;
+    public bool isMelee = false;
+    public bool isRanged = false;
 
     public bool dead = false;
 

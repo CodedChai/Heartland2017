@@ -402,12 +402,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Richard
   rotationTrans: {fileID: 1572052950}
-  dead: 0
-  melee: {fileID: 1820283500}
-  bigMelee: {fileID: 830318879}
   isSpecial: 0
   isMelee: 1
   isRanged: 0
+  dead: 0
+  melee: {fileID: 1820283500}
+  bigMelee: {fileID: 830318879}
 --- !u!1 &30934783
 GameObject:
   m_ObjectHideFlags: 0
@@ -20980,6 +20980,11 @@ Prefab:
       propertyPath: m_Name
       value: Brawler
       objectReference: {fileID: 0}
+    - target: {fileID: 114408353727079404, guid: a7ee5678efd792146a9b78851a5e0943,
+        type: 2}
+      propertyPath: attackDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114416868497006058, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
@@ -23099,13 +23104,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Kyle
   rotationTrans: {fileID: 196473993}
+  isSpecial: 0
+  isMelee: 1
+  isRanged: 1
   dead: 0
   projectile: {fileID: 1710200708061872, guid: f2bed4c5180c82440b423537ef5d7e23, type: 2}
   bigProjectile: {fileID: 1710200708061872, guid: cdb7640c455153d41878e60cac4439a9,
     type: 2}
-  isSpecial: 0
-  isMelee: 1
-  isRanged: 1
 --- !u!1 &1537734339
 GameObject:
   m_ObjectHideFlags: 0
@@ -27337,7 +27342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  knockback: 0
   hitstun: 0
   hits: []
   active: 0
@@ -31018,6 +31022,11 @@ Prefab:
     - target: {fileID: 1633989230616952, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
       propertyPath: m_Name
       value: Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 114408353727079404, guid: a7ee5678efd792146a9b78851a5e0943,
+        type: 2}
+      propertyPath: attackDistance
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114416868497006058, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}

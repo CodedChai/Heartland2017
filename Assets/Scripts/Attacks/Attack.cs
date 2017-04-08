@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour {
     public int damage;
-    public float knockback;
     public float hitstun;//not sure if we want this or not, but yeah.
 
     public List<Transform> hits;
