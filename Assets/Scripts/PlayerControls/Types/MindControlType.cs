@@ -28,7 +28,6 @@ public class MindControlType : CharacterType {
 
     private IEnumerator Reload()
     {
-        print("ded");
         GameObject.Find("Canvas").GetComponentInChildren<FadeIn>().Exit();
         yield return new WaitForSeconds(.9f);
         GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();

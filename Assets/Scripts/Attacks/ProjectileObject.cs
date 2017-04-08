@@ -30,9 +30,8 @@ public class ProjectileObject : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform != og && !collision.CompareTag("Attack"))
-
-            {
-                if (collision.GetComponent<CharacterType>())
+        {
+            if (collision.GetComponent<CharacterType>())
             {
                 collision.GetComponent<CharacterType>().DealDamage(damage);
                 transform.position = collision.transform.position;

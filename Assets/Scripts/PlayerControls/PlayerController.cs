@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+        cam.transform.SetParent(transform);
+        cam.transform.localPosition = new Vector3(0,0,-10);
+
         if (Input.GetButtonDown("Fire1"))
         {
             characterType.Primary();

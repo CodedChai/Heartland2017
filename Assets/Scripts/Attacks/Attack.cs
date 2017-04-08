@@ -21,10 +21,11 @@ public class Attack : MonoBehaviour {
     {
         if(active)
         {
+            print("Hitting " + col.transform.name);
+
 
             if ((col.transform.tag == "Enemy" || col.transform.tag == "Player") && col.transform.tag != tag && !hits.Contains(col.transform))//no FF and can't hit itself basically
             {
-                print(col.transform.name);
 
                 hits.Add(col.transform);
                 col.transform.GetComponent<CharacterType>().DealDamage(damage);

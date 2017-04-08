@@ -27,6 +27,7 @@ public class CharacterType : MonoBehaviour {
 
     public int DealDamage(int damage)
     {
+        print(name);
         hp -= damage;
         if(hp < 1)
         {
