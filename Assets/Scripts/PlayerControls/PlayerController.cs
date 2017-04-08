@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour {
                 GetComponent<BoxCollider2D>().enabled = false;
                 np.name = name;
                 np.name.text = np.GetComponent<CharacterType>().name;
-
                 characterType.dead = true;//it should kill itself
                 Destroy(this);
             }
@@ -92,11 +91,10 @@ public class PlayerController : MonoBehaviour {
             next.GetComponent<PathFollower>().enabled = false;
             next.GetComponent<BasicAI>().enabled = false;
             next.tag = "Player";
-            
 
+            Destroy(bullet);
             np.name = name;
             np.health = health;
-            Destroy(bullet);
             enabled = false;
 
 
@@ -113,18 +111,22 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(startup);
 
         //create projectile and set its position and parents
-        DestroyImmediate(bullet, true);
         bullet = Instantiate(hypno, transform);
         
         bullet.transform.eulerAngles = characterType.rotationTrans.transform.eulerAngles;
         bullet.transform.SetParent(null);
+        float time = 0;
+        for(float x = 10; x < time; time += Time.deltaTime)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         yield return null;
 
     }
 
     void UpdateUI()
     {
-        health.text = hp+"";
+        health.text = hp + "";
     }
 
     // Update movement on physics due to collisions

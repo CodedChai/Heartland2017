@@ -8,6 +8,10 @@ public class TeleportType : CharacterType{
     public Attack melee;//the script associated w/ the melee attack
     public GameObject projectile;//the projectile.
 
+    public bool isSpecial = true;
+    public bool isMelee = true;
+    public bool isRanged = true;
+
 	// Use this for initialization
 	void Start()
     {
