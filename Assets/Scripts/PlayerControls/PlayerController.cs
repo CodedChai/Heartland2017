@@ -158,21 +158,23 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateUI()
     {
-        if (characterType.GetComponent<MindControlType>())
+        ph = GameObject.Find("PlayHud").transform.GetComponent<HUDstate>();
+
+        if (GetComponent<MindControlType>())
         {
             ph.Hypno();
         }
-        else if (characterType.GetComponent<TeleportType>())
+        else if (GetComponent<TeleportType>())
         {
             ph.Teleport();
         }
-        else if (characterType.GetComponent<BrawlerType>())
+        else if (GetComponent<BrawlerType>())
         {
-            ph.Hypno();
+            ph.Puncher();
         }
-        else if (characterType.GetComponent<GunnerType>())
+        else if (GetComponent<GunnerType>())
         {
-            ph.Hypno();
+            ph.Shooter();
         }
 
 
