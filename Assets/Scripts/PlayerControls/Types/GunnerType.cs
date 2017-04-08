@@ -113,7 +113,7 @@ public class GunnerType : CharacterType
     {
         PlaySound();
 
-        transform.localEulerAngles = new Vector3(0f, 0f, angle);
+        //transform.localEulerAngles = new Vector3(0f, 0f, angle);
 
         if (neutral)
         {
@@ -125,17 +125,18 @@ public class GunnerType : CharacterType
 
             //create projectile and set its position and parents
             GameObject bullet = Instantiate(projectile, transform);
+            bullet.transform.eulerAngles = new Vector3(0f, 0f, angle);
             bullet.GetComponent<ProjectileObject>().og = transform;
 
             bullet.transform.SetParent(null);
             neutral = true;
-            transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            //transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
             yield return null;
         }
         else
         {
-            transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            //transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
             yield return null;
         }
@@ -146,7 +147,7 @@ public class GunnerType : CharacterType
     private IEnumerator TertiaryA(float angle)
     {
         PlaySound();
-        transform.localEulerAngles = new Vector3(0f, 0f, angle);
+        //transform.localEulerAngles = new Vector3(0f, 0f, angle);
 
         if (neutral)
         {
@@ -158,17 +159,19 @@ public class GunnerType : CharacterType
 
             //create projectile and set its position and parents
             GameObject bullet = Instantiate(bigProjectile, transform);
+            bullet.transform.eulerAngles = new Vector3(0f, 0f, angle);
+
             bullet.GetComponent<ProjectileObject>().og = transform;
 
             bullet.transform.SetParent(null);
             neutral = true;
-            transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+           // transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
             yield return null;
         }
         else
         {
-            transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+           // transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
             yield return null;
         }
