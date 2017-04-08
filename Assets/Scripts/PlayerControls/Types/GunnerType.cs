@@ -122,7 +122,6 @@ public class GunnerType : CharacterType
             GameObject bullet = Instantiate(projectile, transform);
             bullet.GetComponent<ProjectileObject>().og = transform;
 
-            bullet.transform.eulerAngles = rotationTrans.transform.eulerAngles;
             bullet.transform.SetParent(null);
             neutral = true;
             transform.localEulerAngles = new Vector3(0f, 0f, 0f);
@@ -155,7 +154,6 @@ public class GunnerType : CharacterType
             GameObject bullet = Instantiate(bigProjectile, transform);
             bullet.GetComponent<ProjectileObject>().og = transform;
 
-            bullet.transform.eulerAngles = rotationTrans.transform.eulerAngles;
             bullet.transform.SetParent(null);
             neutral = true;
             transform.localEulerAngles = new Vector3(0f, 0f, 0f);
