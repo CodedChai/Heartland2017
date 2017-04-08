@@ -5,7 +5,7 @@ using UnityEngine;
 public class PathFollower : MonoBehaviour
 {
 
-    public int direction = 0; // 0 is left, 1 is right, 2 is down, 3 is up 
+    public int direction = 0; // 0 is left, 1 is right, 2 is down, 3 is up
     public Vector3 targetWayPoint;
 
     public Vector3 dirVec;
@@ -18,9 +18,12 @@ public class PathFollower : MonoBehaviour
 
     private Transform myTrans;
 
+    private Animator animator;
+
     void Start()
     {
         myTrans = transform;
+        animator = GetComponent<Animator>();
         if (pathfinder == null)
         {
             pathfinder = GetComponentInParent<Pathfinding>();
@@ -39,11 +42,12 @@ public class PathFollower : MonoBehaviour
             direction = Direction();
             //print("Direction is: " + dir + " which is " + direction);
         }
+        UpdateAnimationVars();
     }
 
     void Walk()
     {
-     
+
         myTrans.position = Vector3.MoveTowards(myTrans.position, targetWayPoint, speed * Time.deltaTime);
     }
 
@@ -71,5 +75,11 @@ public class PathFollower : MonoBehaviour
             }
         }
         return direction;
+    }
+
+    void UpdateAnimationVars() {
+      dirVec = (targetWayPoint - myTrans.position).normalized;
+      animator.SetFloat("x_mov", dirVec.x/10f);
+      animator.SetFloat("y_mov", dirVec.y/15f);
     }
 }

@@ -352,6 +352,7 @@ MonoBehaviour:
   damage: 2
   knockback: 0
   hitstun: 0
+  hits: []
   active: 0
 --- !u!114 &114524717539813848
 MonoBehaviour:
@@ -377,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: {fileID: 114834461227887740}
+  og: {fileID: 0}
   hp: 1
   hypno: {fileID: 0}
   name: {fileID: 0}
@@ -395,7 +397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   rotationTrans: {fileID: 4591589338278646}
-  melee: {fileID: 114376615409320464}
+  dead: 0
+  melee: {fileID: 0}
   projectile: {fileID: 1710200708061872, guid: 782b37b810fbdff4d89fffa7b87efda3, type: 2}
 --- !u!120 &120173619697163352
 LineRenderer:
@@ -3576,7 +3579,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9ab77812e07f1d459b9c8c121593c46, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f508de4145ae604f9da4204e4bd5fe6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
