@@ -3773,7 +3773,7 @@ Prefab:
     - target: {fileID: 114408353727079404, guid: a7ee5678efd792146a9b78851a5e0943,
         type: 2}
       propertyPath: attackDistance
-      value: 0.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4367761881623030, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3911,7 +3911,8 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -3.99
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114271718439933638, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &471056343 stripped
