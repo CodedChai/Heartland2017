@@ -22,7 +22,7 @@ public class CharacterType : MonoBehaviour {
 
 	public float GetMoveSpeed()
 	{
-		return movespeed;
+		return movespeed + GlobalMoveSpeed.GetSpeedDelta();
 	}
 
     public int DealDamage(int damage)
@@ -39,6 +39,7 @@ public class CharacterType : MonoBehaviour {
 
     virtual public void Die()
     {
+        GlobalMoveSpeed.AlterSpeed(1f);
         Destroy(gameObject);
     }
 
@@ -47,5 +48,11 @@ public class CharacterType : MonoBehaviour {
 	virtual public void Secondary() { }
 
     virtual public void Tertiary() { }
+
+    virtual public void Primary(float angle) { }
+
+    virtual public void Secondary(float angle) { }
+
+    virtual public void Tertiary(float angle) { }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotationHandler : MonoBehaviour {
     public float angle;
     SpriteRenderer spriteRenderer;
+
     // Use this for initialization
     void Start () {
         //spriteRenderer = GetComponent<SpriteRenderer>();

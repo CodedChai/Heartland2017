@@ -12,7 +12,7 @@ public class MindControlType : CharacterType {
     // Use this for initialization
     void Start()
     {
-        movespeed = 3;
+        movespeed = 3 + GlobalMoveSpeed.GetSpeedDelta();
 
         name = "Hypno";
         //overwrite movespeed and hp here.

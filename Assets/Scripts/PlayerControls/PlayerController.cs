@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public CharacterType characterType;//archetype/movesets
     public GameObject og;
-    float speed;
+    public float speed;
     public int hp;
     public GameObject hypno;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
             characterType = GetComponent<MindControlType>();
         }
         animator = GetComponent<Animator>();
-        speed = characterType.GetMoveSpeed();
+        speed = characterType.GetMoveSpeed() + GlobalMoveSpeed.GetSpeedDelta();
         prevPos = transform.position;
         hp = characterType.GetHP();
         name.text = characterType.name;
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour {
     //basic movement. Might make this check to see if it's doing stuff but idk
     void Move()
     {
-        transform.Translate(new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime));
+        transform.Translate(new Vector3((GlobalMoveSpeed.GetSpeedDelta() + speed) * Input.GetAxis("Horizontal") * Time.deltaTime, (GlobalMoveSpeed.GetSpeedDelta() + speed) * Input.GetAxis("Vertical") * Time.deltaTime));
     }
 
     //record pos.
@@ -150,8 +150,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void UpdateAnimationVars() {
-      animator.SetFloat("x_mov", speed * Input.GetAxis("Horizontal"));
-      animator.SetFloat("y_mov", speed * Input.GetAxis("Vertical"));
+      animator.SetFloat("x_mov", (GlobalMoveSpeed.GetSpeedDelta() + speed) * Input.GetAxis("Horizontal"));
+      animator.SetFloat("y_mov", (GlobalMoveSpeed.GetSpeedDelta() + speed) * Input.GetAxis("Vertical"));
     }
 
 

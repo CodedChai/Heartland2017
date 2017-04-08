@@ -22,7 +22,6 @@ public class BasicAI : MonoBehaviour {
     public bool updateSearch = true;
     public float searchStandInPlaceTime = 3f;
     public Stopwatch sw;
-    public RotationHandler rotHandler;
     public CharacterType charType;
     public bool updateAttack = true;
     public float attackWait = .33f;
@@ -50,7 +49,6 @@ public class BasicAI : MonoBehaviour {
         pathfinding.target = patrolPoints[currentPatrolPoint];
         sw = new Stopwatch();
         player = GameObject.Find("Player");
-        rotHandler = GetComponentInChildren<RotationHandler>();
         charType = GetComponent<CharacterType>();
     }
 
@@ -66,7 +64,7 @@ public class BasicAI : MonoBehaviour {
         if ((state == 0 || state == 3) && SeePlayer())
         {
             state = 1;
-            pathFollower.speed = 3;
+            pathFollower.speed = 3 + GlobalMoveSpeed.GetSpeedDelta();
             pathFollower.shouldMove = true;
         }
 
@@ -91,7 +89,7 @@ public class BasicAI : MonoBehaviour {
                     lastKnown.position = pathfinding.target.position;
                     pathfinding.target = lastKnown;
                     state = 3;
-                    pathFollower.speed = 1.5f;
+                    pathFollower.speed = 1.5f + GlobalMoveSpeed.GetSpeedDelta();
 
                 }
 
@@ -150,13 +148,13 @@ public class BasicAI : MonoBehaviour {
         {
             print("Found you!! Time to chase.");
             state = 1;
-            pathFollower.speed = 3f;
+            pathFollower.speed = 3f + GlobalMoveSpeed.GetSpeedDelta();
             pathfinding.target = player.transform;
         } else
         {
             print("Can't find them, guess I should head back to my post.");
             state = 0;
-            pathFollower.speed = 1f;
+            pathFollower.speed = 1f + GlobalMoveSpeed.GetSpeedDelta();
             lastKnown = null;
             DestroyImmediate(GameObject.Find("Player's Last Known Location"));
         }
@@ -203,14 +201,12 @@ public class BasicAI : MonoBehaviour {
         print("Chasing");
         if(charType.isSpecial && Random.Range(0,1) > .95f)
         {
-            rotHandler.angle = AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f;
-            rotHandler.transform.localEulerAngles = new Vector3(0f, 0f, rotHandler.angle);
-            charType.Primary();     // Teleport
+
+            charType.Primary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);     // Teleport
         } else if (charType.isRanged && Random.Range(0, 1) > .95f)
         {
-            rotHandler.angle = AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f;
-            rotHandler.transform.localEulerAngles = new Vector3(0f, 0f, rotHandler.angle);
-            charType.Tertiary();    // Do a ranged attack
+
+            charType.Tertiary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);    // Do a ranged attack
         }
         if(Vector2.Distance(pathfinding.target.position, myTrans.position) < attackDistance)
         {
@@ -233,33 +229,34 @@ public class BasicAI : MonoBehaviour {
         {
             // Attack the player
             // For melee type
-            rotHandler.angle = AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f;
-            rotHandler.transform.localEulerAngles = new Vector3(0f, 0f, rotHandler.angle);
             if (!charType.isSpecial && charType.isMelee && !charType.isRanged)
             {
                 if (Time.time % 10 > 5f)
                 {
-                    charType.Secondary();
+                    charType.Secondary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);
                 }
                 else
                 {
-                    charType.Tertiary();
+                    charType.Tertiary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);
                 }
             } // For ranged type
             else if (!charType.isSpecial && charType.isMelee && charType.isRanged)
             {
-                charType.Secondary();
+                charType.Secondary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);
             }
             // For teleport type
             else if (charType.isSpecial && charType.isMelee && charType.isRanged)
             {
                 if (Time.time % 10 > 7f)
                 {
-                    charType.Primary();
+                    charType.Primary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);
                 }
                 else if (Time.time % 10 > 6f)
                 {
-                    charType.Secondary();
+                    charType.Secondary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);
+                } else
+                {
+                    charType.Tertiary(AngleBetweenVector2(pathfinding.target.position, myTrans.position) + 90f);
                 }
             }
             StartCoroutine(PauseAttack(attackWait));
@@ -271,7 +268,7 @@ public class BasicAI : MonoBehaviour {
         {
             print("I should chase.");
             state = 1;
-            pathFollower.speed = 3;
+            pathFollower.speed = 3 + GlobalMoveSpeed.GetSpeedDelta();
             pathFollower.shouldMove = true;
         }
     }
