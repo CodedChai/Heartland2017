@@ -48,7 +48,7 @@ public class CharacterType : MonoBehaviour {
             p.GetComponent<PlayerController>().GoBack();
 
         }
-        GlobalMoveSpeed.AlterSpeed(1f);
+        GlobalMoveSpeed.AlterSpeed(.5f);
         Destroy(gameObject.transform.parent.gameObject, .3f);
     }
 

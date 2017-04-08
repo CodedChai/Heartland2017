@@ -13,8 +13,8 @@ public class GunnerType : CharacterType
     {
         name = "Shooter";
         //overwrite movespeed and hp here.
-        movespeed = 2;
-        hp = 2;
+        movespeed = 1;
+        hp = 7;
         //setting ranged
         isSpecial = false;
         isMelee = true;
