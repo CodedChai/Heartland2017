@@ -366,11 +366,12 @@ MonoBehaviour:
   isSpecial: 0
   isMelee: 0
   isRanged: 0
+  neutral: 1
+  clip: {fileID: 8300000, guid: 146b21a036bfce04daf335988ee9aa67, type: 3}
   dead: 0
   rot: {fileID: 114116298861647482}
   rotationObj: {fileID: 4800377167747064}
   melee: {fileID: 114959633725718592}
-  neutral: 1
 --- !u!114 &114938807638265098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: {fileID: 114501484268098632}
   og: {fileID: 1029065091158498}
+  speed: 0
   hp: 1
   hypno: {fileID: 1710200708061872, guid: e80cbbd251f383b4f89d8a7f3b4aba8b, type: 2}
   name: {fileID: 0}
