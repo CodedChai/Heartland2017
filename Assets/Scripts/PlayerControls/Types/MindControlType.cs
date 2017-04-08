@@ -44,6 +44,8 @@ public class MindControlType : CharacterType {
 
     private IEnumerator SecondaryA()
     {
+        PlaySound();
+
         if (neutral)
         {
             neutral = false;
@@ -67,5 +69,12 @@ public class MindControlType : CharacterType {
         {
             yield return null;
         }
+    }
+
+    void PlaySound()
+    {
+        GameObject audio = Instantiate<GameObject>(new GameObject());
+        audio.AddComponent<AudioSource>();
+        audio.GetComponent<AudioSource>().PlayOneShot(clip);
     }
 }

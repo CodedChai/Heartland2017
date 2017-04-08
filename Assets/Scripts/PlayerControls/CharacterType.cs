@@ -11,6 +11,7 @@ public class CharacterType : MonoBehaviour {
     public bool isSpecial = false;
     public bool isMelee = false;
     public bool isRanged = false;
+    public AudioClip clip;
 
     public bool dead = false;
 

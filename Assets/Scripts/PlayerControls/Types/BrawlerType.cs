@@ -41,6 +41,7 @@ public class BrawlerType : CharacterType
    
     private IEnumerator SecondaryA()
     {
+        PlaySound();
         if (neutral)
         {
             neutral = false;
@@ -68,6 +69,7 @@ public class BrawlerType : CharacterType
 
     private IEnumerator TertiaryA()
     {
+        PlaySound();
         if (neutral)
         {
             neutral = false;
@@ -110,6 +112,7 @@ public class BrawlerType : CharacterType
 
     private IEnumerator SecondaryA(float angle)
     {
+        PlaySound();
         transform.localEulerAngles = new Vector3(0f, 0f, angle);
 
         if (neutral)
@@ -143,6 +146,7 @@ public class BrawlerType : CharacterType
 
     private IEnumerator TertiaryA(float angle)
     {
+        PlaySound();
         transform.localEulerAngles = new Vector3(0f, 0f, angle);
 
         if (neutral)
@@ -173,5 +177,12 @@ public class BrawlerType : CharacterType
             yield return null;
         }
 
+    }
+
+    void PlaySound()
+    {
+        GameObject audio = Instantiate<GameObject>(new GameObject());
+        audio.AddComponent<AudioSource>();
+        audio.GetComponent<AudioSource>().PlayOneShot(clip);
     }
 }

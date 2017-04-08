@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileObject : MonoBehaviour {
+    public AudioClip clip;
     public Transform og;
     public float speed;
     public float lifespan;
@@ -29,6 +30,9 @@ public class ProjectileObject : MonoBehaviour {
     //break stuff if the move is active.
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject audio = Instantiate<GameObject>(new GameObject());
+        audio.AddComponent<AudioSource>();
+        audio.GetComponent<AudioSource>().PlayOneShot(clip);
         if (collision.transform != og && !collision.CompareTag("Attack"))
         {
             if (collision.GetComponent<CharacterType>())
