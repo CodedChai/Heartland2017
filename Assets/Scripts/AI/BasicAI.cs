@@ -250,18 +250,18 @@ public class BasicAI : MonoBehaviour {
         UnityEngine.Debug.DrawRay(myTrans.position, pathFollower.dirVec * lineOfSite, Color.cyan);
         UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
         UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.4f, .4f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(-.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
-        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(-.8f, .8f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(.6f, .6f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(.6f, .6f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position - new Vector3(-.6f, .6f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
+        UnityEngine.Debug.DrawRay(myTrans.position + new Vector3(-.6f, .6f, 0f), pathFollower.dirVec * lineOfSite, Color.cyan);
 
         hit0 = Physics2D.Raycast(myTrans.position, pathFollower.dirVec, lineOfSite);
         hit1 = Physics2D.Raycast(myTrans.position - new Vector3(.4f, .4f, 0f), pathFollower.dirVec, lineOfSite);
         hit2 = Physics2D.Raycast(myTrans.position + new Vector3(.4f, .4f, 0f), pathFollower.dirVec, lineOfSite);
-        hit3 = Physics2D.Raycast(myTrans.position - new Vector3(.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
-        hit4 = Physics2D.Raycast(myTrans.position + new Vector3(.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
-        hit5 = Physics2D.Raycast(myTrans.position - new Vector3(-.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
-        hit6 = Physics2D.Raycast(myTrans.position + new Vector3(-.8f, .8f, 0f), pathFollower.dirVec, lineOfSite);
+        hit3 = Physics2D.Raycast(myTrans.position - new Vector3(.6f, .6f, 0f), pathFollower.dirVec, lineOfSite);
+        hit4 = Physics2D.Raycast(myTrans.position + new Vector3(.6f, .6f, 0f), pathFollower.dirVec, lineOfSite);
+        hit5 = Physics2D.Raycast(myTrans.position - new Vector3(-.6f, .6f, 0f), pathFollower.dirVec, lineOfSite);
+        hit6 = Physics2D.Raycast(myTrans.position + new Vector3(-.6f, .6f, 0f), pathFollower.dirVec, lineOfSite);
         playerSeen = CheckCollisions();
 
         return playerSeen;
@@ -271,6 +271,8 @@ public class BasicAI : MonoBehaviour {
     {
         if(hit0.collider != null)
         {
+            print("" + hit0.collider.gameObject.name);
+
             if (hit0.collider.CompareTag("Player")){
                 print("See player");
                 pathfinding.target = hit0.transform;
@@ -279,6 +281,8 @@ public class BasicAI : MonoBehaviour {
         }
         if (hit1.collider != null)
         {
+            print("" + hit1.collider.gameObject.name);
+
             if (hit1.collider.CompareTag("Player"))
             {
                 print("See player");
@@ -288,8 +292,11 @@ public class BasicAI : MonoBehaviour {
         }
         if (hit2.collider != null)
         {
+            print("" + hit2.collider.gameObject.name);
+
             if (hit2.collider.CompareTag("Player"))
             {
+
                 print("See player");
                 pathfinding.target = hit2.transform;
                 return true;
@@ -297,17 +304,24 @@ public class BasicAI : MonoBehaviour {
         }
         if (hit3.collider != null)
         {
+            print("" + hit3.collider.gameObject.name);
+
             if (hit3.collider.CompareTag("Player"))
             {
                 print("See player");
+                print("" + hit3.collider.gameObject.name);
                 pathfinding.target = hit3.transform;
                 return true;
             }
         }
         if (hit4.collider != null)
         {
+            print("" + hit4.collider.gameObject.name);
+
             if (hit4.collider.CompareTag("Player"))
             {
+                print("" + hit4.collider.gameObject.name);
+
                 print("See player");
                 pathfinding.target = hit4.transform;
                 return true;
@@ -315,6 +329,8 @@ public class BasicAI : MonoBehaviour {
         }
         if (hit5.collider != null)
         {
+            print("" + hit5.collider.gameObject.name);
+
             if (hit5.collider.CompareTag("Player"))
             {
                 print("See player");
@@ -324,6 +340,8 @@ public class BasicAI : MonoBehaviour {
         }
         if (hit6.collider != null)
         {
+            print("" + hit6.collider.gameObject.name);
+
             if (hit6.collider.CompareTag("Player"))
             {
                 print("See player");

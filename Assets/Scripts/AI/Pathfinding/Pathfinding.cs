@@ -8,6 +8,8 @@ public class Pathfinding : MonoBehaviour {
     public Transform seeker, target;
     public Vector3 nextPosition;
     Grid grid;
+    public float updateInterval = .5f;
+    private float nextTime = 0f;
 
     void Awake()
     {
@@ -16,10 +18,14 @@ public class Pathfinding : MonoBehaviour {
 
     void Update()
     {
-        if(seeker != null && target != null && Vector2.Distance(seeker.position, target.position) > Vector2.kEpsilon)
+      
+        if (Time.time >= nextTime || seeker != null && target != null && Vector2.Distance(seeker.position, target.position) > Vector2.kEpsilon)
         {
+            nextTime += updateInterval;
             FindPath(seeker.position, target.position);
         }
+        
+       
     }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
