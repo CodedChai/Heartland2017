@@ -4,7 +4,6 @@ using UnityEngine;
 public class GunnerType : CharacterType
 {
 
-    bool neutral = true;//check if player can do stuff
 
     public GameObject projectile;//the script associated w/ the melee attack
     public GameObject bigProjectile;//the projectile.

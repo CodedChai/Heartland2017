@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class TeleportType : CharacterType{
 
-    bool neutral = true;//check if player can do stuff
-
     public Attack melee;//the script associated w/ the melee attack
     public GameObject projectile;//the projectile.
 

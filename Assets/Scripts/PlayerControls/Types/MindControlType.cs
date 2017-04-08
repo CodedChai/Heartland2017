@@ -7,7 +7,6 @@ public class MindControlType : CharacterType {
     public RotationHandler rot;
     public Transform rotationObj;
     public Attack melee;
-    public bool neutral = true;
 
     // Use this for initialization
     void Start()

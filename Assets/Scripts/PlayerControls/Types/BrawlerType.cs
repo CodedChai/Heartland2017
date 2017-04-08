@@ -4,8 +4,6 @@ using UnityEngine;
 public class BrawlerType : CharacterType
 {
 
-    bool neutral = true;//check if player can do stuff
-
     public Attack melee;//the script associated w/ the melee attack
     public Attack bigMelee;
   

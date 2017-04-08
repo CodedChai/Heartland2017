@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
 
     private Animator animator;
 
+    HUDstate ph;
+
     // Use this for initialization
 	void Start ()
     {
@@ -25,6 +27,26 @@ public class PlayerController : MonoBehaviour {
         {
             characterType = GetComponent<MindControlType>();
         }
+
+        ph = GameObject.Find("PlayHud").transform.GetComponent<HUDstate>();
+        if (characterType.GetComponent<MindControlType>())
+        {
+            ph.Hypno();
+        }
+        else if (characterType.GetComponent<TeleportType>())
+        {
+            ph.Teleport();
+        }
+        else if (characterType.GetComponent<BrawlerType>())
+        {
+            ph.Hypno();
+        }
+        else if (characterType.GetComponent<GunnerType>())
+        {
+            ph.Hypno();
+        }
+
+
         animator = GetComponent<Animator>();
         speed = characterType.GetMoveSpeed() + GlobalMoveSpeed.GetSpeedDelta();
         prevPos = transform.position;
@@ -130,6 +152,25 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateUI()
     {
+        if (characterType.GetComponent<MindControlType>())
+        {
+            ph.Hypno();
+        }
+        else if (characterType.GetComponent<TeleportType>())
+        {
+            ph.Teleport();
+        }
+        else if (characterType.GetComponent<BrawlerType>())
+        {
+            ph.Hypno();
+        }
+        else if (characterType.GetComponent<GunnerType>())
+        {
+            ph.Hypno();
+        }
+
+
+        ph.blinking = !GetComponent<CharacterType>().neutral;
         health.text = hp + "";
     }
 
