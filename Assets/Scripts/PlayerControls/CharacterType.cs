@@ -36,7 +36,7 @@ public class CharacterType : MonoBehaviour {
 
     virtual public void Die()
     {
-        GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();
+        Destroy(gameObject);
     }
 
     virtual public void Primary() { }

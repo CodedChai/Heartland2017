@@ -15,6 +15,7 @@ public class MindProjectile : MonoBehaviour
     // Use this for initialization
 
     // Update is called once per frame
+ 
     void Update()
     {
         //track time until we break the projectile
@@ -29,7 +30,8 @@ public class MindProjectile : MonoBehaviour
     //break stuff if the move is active.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Player")
+        print("Bullet collided with: " + collision.tag);
+        if (!collision.CompareTag("Player") && !collision.CompareTag("Attack"))
         {
             //deal damage and stuff
             if (collision.tag == "Enemy")
@@ -40,11 +42,14 @@ public class MindProjectile : MonoBehaviour
             }
             else
             {
+                print("boop");
                 Destroy(gameObject);
             }
 
         }
     }
+
+
 
 
 }

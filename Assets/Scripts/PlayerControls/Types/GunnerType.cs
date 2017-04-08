@@ -9,6 +9,10 @@ public class GunnerType : CharacterType
     public GameObject projectile;//the script associated w/ the melee attack
     public GameObject bigProjectile;//the projectile.
 
+    public bool isSpecial = false;
+    public bool isMelee = true;
+    public bool isRanged = true;
+
     // Use this for initialization
     void Start()
     {

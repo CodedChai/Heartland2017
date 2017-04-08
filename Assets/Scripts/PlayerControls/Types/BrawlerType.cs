@@ -8,6 +8,9 @@ public class BrawlerType : CharacterType
 
     public Attack melee;//the script associated w/ the melee attack
     public Attack bigMelee;
+    public bool isSpecial = false;
+    public bool isMelee = true;
+    public bool isRanged = false;
 
     // Use this for initialization
     void Start()
@@ -20,13 +23,13 @@ public class BrawlerType : CharacterType
     }
 
 
-    //secondary attack, melee hit. B
+    //secondary attack, melee hit. B is either big or smol
     public override void Secondary()
     {
         StartCoroutine(SecondaryA());
     }
 
-    //thrid attack, the projectile. Y
+    //thrid attack, the projectile. Y also melee
     public override void Tertiary()
     {
         StartCoroutine(TertiaryA());
