@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (characterType.name != "Hypno")
             {
+                //StartCoroutine(NoNeutral(2f));
                 PlayerController np = og.GetComponent<PlayerController>();
                 np.enabled = true;
                 characterType.rotationTrans.SetActive(false);
@@ -198,6 +199,13 @@ public class PlayerController : MonoBehaviour {
         health.text = hp + "";
     }
 
+    IEnumerator NoNeutral(float wait)
+    {
+        GetComponent<CharacterType>().neutral = false;
+        yield return new WaitForSeconds(wait);
+        GetComponent<CharacterType>().neutral = true;
+        yield return null;
+    }
     // Update movement on physics due to collisions
     void FixedUpdate()
     {
