@@ -3112,6 +3112,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!1 &389102624 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1869105111571502, guid: a7ee5678efd792146a9b78851a5e0943,
+    type: 2}
+  m_PrefabInternal: {fileID: 471056342}
 --- !u!1 &410071912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,7 +3778,7 @@ Prefab:
     - target: {fileID: 114408353727079404, guid: a7ee5678efd792146a9b78851a5e0943,
         type: 2}
       propertyPath: attackDistance
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4367761881623030, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3913,6 +3918,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114271718439933638, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
+    - {fileID: 114997035686830144, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a7ee5678efd792146a9b78851a5e0943, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &471056343 stripped
@@ -11401,6 +11407,33 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!1 &1736133342 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1633989230616952, guid: a7ee5678efd792146a9b78851a5e0943,
+    type: 2}
+  m_PrefabInternal: {fileID: 471056342}
+--- !u!114 &1736133344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736133342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dffe39c7c093a94c9200cb46014d5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bang
+  rotationTrans: {fileID: 389102624}
+  isSpecial: 0
+  isMelee: 0
+  isRanged: 1
+  neutral: 1
+  clip: {fileID: 8300000, guid: b9f6d92c921a01d46b57797f68305a10, type: 3}
+  dead: 0
+  projectile: {fileID: 1710200708061872, guid: f2bed4c5180c82440b423537ef5d7e23, type: 2}
+  bigProjectile: {fileID: 1710200708061872, guid: cdb7640c455153d41878e60cac4439a9,
+    type: 2}
 --- !u!1 &1795748224
 GameObject:
   m_ObjectHideFlags: 0
@@ -11991,7 +12024,8 @@ Prefab:
         type: 2}
       propertyPath: hypno
       value: 
-      objectReference: {fileID: 1905693946}
+      objectReference: {fileID: 1710200708061872, guid: e80cbbd251f383b4f89d8a7f3b4aba8b,
+        type: 2}
     - target: {fileID: 1119563921186852, guid: b2fed9ff9029514428eb8a120e236f28, type: 2}
       propertyPath: m_TagString
       value: Untagged
@@ -12007,11 +12041,6 @@ Transform:
 --- !u!20 &1905693945 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20196782851075098, guid: b2fed9ff9029514428eb8a120e236f28,
-    type: 2}
-  m_PrefabInternal: {fileID: 1905693943}
---- !u!1 &1905693946 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1029065091158498, guid: b2fed9ff9029514428eb8a120e236f28,
     type: 2}
   m_PrefabInternal: {fileID: 1905693943}
 --- !u!1 &1908249924
