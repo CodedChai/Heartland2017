@@ -1,41 +1,41 @@
 fileFormatVersion: 2
-guid: d9ab77812e07f1d459b9c8c121593c46
-timeCreated: 1491170246
+guid: 9dc2a78d6e834ac4fb427e4ca081e32f
+timeCreated: 1491615745
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlayerCharacterSheet_0
-    21300002: PlayerCharacterSheet_1
-    21300004: PlayerCharacterSheet_2
-    21300006: PlayerCharacterSheet_3
-    21300008: PlayerCharacterSheet_4
-    21300010: PlayerCharacterSheet_5
-    21300012: PlayerCharacterSheet_6
-    21300014: PlayerCharacterSheet_7
-    21300016: PlayerCharacterSheet_8
-    21300018: PlayerCharacterSheet_9
-    21300020: PlayerCharacterSheet_10
-    21300022: PlayerCharacterSheet_11
-    21300024: PlayerCharacterSheet_12
-    21300026: PlayerCharacterSheet_13
-    21300028: PlayerCharacterSheet_14
-    21300030: PlayerCharacterSheet_15
-    21300032: PlayerCharacterSheet_16
-    21300034: PlayerCharacterSheet_17
-    21300036: PlayerCharacterSheet_18
-    21300038: PlayerCharacterSheet_19
-    21300040: PlayerCharacterSheet_20
-    21300042: PlayerCharacterSheet_21
-    21300044: PlayerCharacterSheet_22
-    21300046: PlayerCharacterSheet_23
-    21300048: PlayerCharacterSheet_24
-    21300050: PlayerCharacterSheet_25
-    21300052: PlayerCharacterSheet_26
-    21300054: PlayerCharacterSheet_27
-    21300056: PlayerCharacterSheet_28
-    21300058: PlayerCharacterSheet_29
-    21300060: PlayerCharacterSheet_30
-    21300062: PlayerCharacterSheet_31
+    21300000: EnemySpriteSheet_0
+    21300002: EnemySpriteSheet_1
+    21300004: EnemySpriteSheet_2
+    21300006: EnemySpriteSheet_3
+    21300008: EnemySpriteSheet_4
+    21300010: EnemySpriteSheet_5
+    21300012: EnemySpriteSheet_6
+    21300014: EnemySpriteSheet_7
+    21300016: EnemySpriteSheet_8
+    21300018: EnemySpriteSheet_9
+    21300020: EnemySpriteSheet_10
+    21300022: EnemySpriteSheet_11
+    21300024: EnemySpriteSheet_12
+    21300026: EnemySpriteSheet_13
+    21300028: EnemySpriteSheet_14
+    21300030: EnemySpriteSheet_15
+    21300032: EnemySpriteSheet_16
+    21300034: EnemySpriteSheet_17
+    21300036: EnemySpriteSheet_18
+    21300038: EnemySpriteSheet_19
+    21300040: EnemySpriteSheet_20
+    21300042: EnemySpriteSheet_21
+    21300044: EnemySpriteSheet_22
+    21300046: EnemySpriteSheet_23
+    21300048: EnemySpriteSheet_24
+    21300050: EnemySpriteSheet_25
+    21300052: EnemySpriteSheet_26
+    21300054: EnemySpriteSheet_27
+    21300056: EnemySpriteSheet_28
+    21300058: EnemySpriteSheet_29
+    21300060: EnemySpriteSheet_30
+    21300062: EnemySpriteSheet_31
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerCharacterSheet_0
+      name: EnemySpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -147,7 +147,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_1
+      name: EnemySpriteSheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -160,7 +160,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_2
+      name: EnemySpriteSheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,7 +173,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_3
+      name: EnemySpriteSheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -186,7 +186,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_4
+      name: EnemySpriteSheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -199,7 +199,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_5
+      name: EnemySpriteSheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -212,7 +212,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_6
+      name: EnemySpriteSheet_6
       rect:
         serializedVersion: 2
         x: 192
@@ -225,7 +225,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_7
+      name: EnemySpriteSheet_7
       rect:
         serializedVersion: 2
         x: 224
@@ -238,7 +238,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_8
+      name: EnemySpriteSheet_8
       rect:
         serializedVersion: 2
         x: 256
@@ -251,7 +251,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_9
+      name: EnemySpriteSheet_9
       rect:
         serializedVersion: 2
         x: 288
@@ -264,7 +264,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_10
+      name: EnemySpriteSheet_10
       rect:
         serializedVersion: 2
         x: 320
@@ -277,7 +277,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_11
+      name: EnemySpriteSheet_11
       rect:
         serializedVersion: 2
         x: 352
@@ -290,7 +290,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_12
+      name: EnemySpriteSheet_12
       rect:
         serializedVersion: 2
         x: 384
@@ -303,7 +303,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_13
+      name: EnemySpriteSheet_13
       rect:
         serializedVersion: 2
         x: 416
@@ -316,7 +316,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_14
+      name: EnemySpriteSheet_14
       rect:
         serializedVersion: 2
         x: 448
@@ -329,7 +329,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_15
+      name: EnemySpriteSheet_15
       rect:
         serializedVersion: 2
         x: 480
@@ -342,7 +342,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_16
+      name: EnemySpriteSheet_16
       rect:
         serializedVersion: 2
         x: 512
@@ -355,7 +355,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_17
+      name: EnemySpriteSheet_17
       rect:
         serializedVersion: 2
         x: 544
@@ -368,7 +368,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_18
+      name: EnemySpriteSheet_18
       rect:
         serializedVersion: 2
         x: 576
@@ -381,7 +381,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_19
+      name: EnemySpriteSheet_19
       rect:
         serializedVersion: 2
         x: 608
@@ -394,7 +394,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_20
+      name: EnemySpriteSheet_20
       rect:
         serializedVersion: 2
         x: 640
@@ -407,7 +407,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_21
+      name: EnemySpriteSheet_21
       rect:
         serializedVersion: 2
         x: 672
@@ -420,7 +420,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_22
+      name: EnemySpriteSheet_22
       rect:
         serializedVersion: 2
         x: 704
@@ -433,7 +433,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_23
+      name: EnemySpriteSheet_23
       rect:
         serializedVersion: 2
         x: 736
@@ -446,7 +446,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_24
+      name: EnemySpriteSheet_24
       rect:
         serializedVersion: 2
         x: 768
@@ -459,7 +459,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_25
+      name: EnemySpriteSheet_25
       rect:
         serializedVersion: 2
         x: 800
@@ -472,7 +472,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_26
+      name: EnemySpriteSheet_26
       rect:
         serializedVersion: 2
         x: 832
@@ -485,7 +485,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_27
+      name: EnemySpriteSheet_27
       rect:
         serializedVersion: 2
         x: 864
@@ -498,7 +498,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_28
+      name: EnemySpriteSheet_28
       rect:
         serializedVersion: 2
         x: 896
@@ -511,7 +511,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_29
+      name: EnemySpriteSheet_29
       rect:
         serializedVersion: 2
         x: 928
@@ -524,7 +524,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_30
+      name: EnemySpriteSheet_30
       rect:
         serializedVersion: 2
         x: 960
@@ -537,7 +537,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayerCharacterSheet_31
+      name: EnemySpriteSheet_31
       rect:
         serializedVersion: 2
         x: 992
