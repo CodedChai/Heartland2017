@@ -54,6 +54,11 @@ public class BasicAI : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if(pathfinding.target == null)
+        {
+            state = 0;
+            pathfinding.target = patrolPoints[currentPatrolPoint];
+        }
         StateHandler();
 	}
 

@@ -41,8 +41,15 @@ public class CharacterType : MonoBehaviour {
 
     virtual public void Die()
     {
+        if (transform.CompareTag("Player"))
+        {
+            print("I died as someone else");
+            GameObject p = GameObject.Find("Player");
+            p.GetComponent<PlayerController>().GoBack();
+
+        }
         GlobalMoveSpeed.AlterSpeed(1f);
-        Destroy(gameObject.transform.parent.gameObject);
+        Destroy(gameObject.transform.parent.gameObject, .3f);
     }
 
     virtual public void Primary() { }

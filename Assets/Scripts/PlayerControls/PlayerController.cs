@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour {
     public int hp;
     public GameObject hypno;
     Vector3 prevPos;//to make physics stuff look a bit smoother with some bounceback
-
+    public AudioClip clip;
     public Text name;
     public Text health;
     public GameObject bullet;
+    GameObject cam;
 
     private Animator animator;
 
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
         cam.transform.SetParent(transform);
         cam.transform.localPosition = new Vector3(0,0,-10);
 
@@ -85,14 +86,15 @@ public class PlayerController : MonoBehaviour {
                 GetComponent<BoxCollider2D>().enabled = false;
                 np.name = name;
                 np.name.text = np.GetComponent<CharacterType>().name;
+                cam.transform.SetParent(og.transform);
+                cam.transform.localPosition = new Vector3(0, 0, -10);
                 characterType.dead = true;//it should kill itself
                 characterType.Die();
 
-                cam.transform.SetParent(og.transform);
-                cam.transform.localPosition = new Vector3(0, 0, -10);
+                
 
 
-                Destroy(this);
+               // Destroy(this);
             }
             else
             {
@@ -103,6 +105,20 @@ public class PlayerController : MonoBehaviour {
         UpdateUI();
         CheckState();
 
+    }
+
+    public void GoBack()
+    {
+        PlayerController np = og.GetComponent<PlayerController>();
+        np.enabled = true;
+        characterType.rotationTrans.SetActive(false);
+        np.characterType.rotationTrans.SetActive(true);
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<BoxCollider2D>().enabled = false;
+        np.name = name;
+        np.name.text = np.GetComponent<CharacterType>().name;
+        cam.transform.SetParent(og.transform);
+        cam.transform.localPosition = new Vector3(0, 0, -10);
     }
 
     void CheckState()
@@ -144,7 +160,7 @@ public class PlayerController : MonoBehaviour {
 
         //create projectile and set its position and parents
         bullet = Instantiate(hypno, transform);
-        
+        PlaySound();
         bullet.transform.eulerAngles = characterType.rotationTrans.transform.eulerAngles;
         bullet.transform.SetParent(null);
         float time = 0;
@@ -206,6 +222,12 @@ public class PlayerController : MonoBehaviour {
       animator.SetFloat("x_mov", (GlobalMoveSpeed.GetSpeedDelta() + speed) * Input.GetAxis("Horizontal"));
       animator.SetFloat("y_mov", (GlobalMoveSpeed.GetSpeedDelta() + speed) * Input.GetAxis("Vertical"));
     }
-
+    void PlaySound()
+    {
+        GameObject audio = Instantiate<GameObject>(new GameObject());
+        audio.AddComponent<AudioSource>();
+        audio.GetComponent<AudioSource>().PlayOneShot(clip);
+        Destroy(audio, 1f);
+    }
 
 }
