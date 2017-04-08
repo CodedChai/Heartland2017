@@ -7,7 +7,6 @@ public class ProjectileObject : MonoBehaviour {
     public float speed;
     public float lifespan;
     public int damage;
-    public float knockback;
     public float hitstun;//idk if we're going to use hitstun but it can't hurt
     float time = 0;
     // Use this for initialization
@@ -30,13 +29,13 @@ public class ProjectileObject : MonoBehaviour {
     //break stuff if the move is active.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform != og)
-        {
-            if (collision.GetComponent<CharacterType>())
+        if (collision.transform != og && !collision.CompareTag("Attack"))
+
+            {
+                if (collision.GetComponent<CharacterType>())
             {
                 collision.GetComponent<CharacterType>().DealDamage(damage);
                 transform.position = collision.transform.position;
-                transform.Translate(0, knockback, 0, Space.Self);
                 collision.transform.position = transform.position;
             }
 

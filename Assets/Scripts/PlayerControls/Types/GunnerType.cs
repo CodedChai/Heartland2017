@@ -9,10 +9,6 @@ public class GunnerType : CharacterType
     public GameObject projectile;//the script associated w/ the melee attack
     public GameObject bigProjectile;//the projectile.
 
-    public bool isSpecial = false;
-    public bool isMelee = true;
-    public bool isRanged = true;
-
     // Use this for initialization
     void Start()
     {
@@ -20,18 +16,23 @@ public class GunnerType : CharacterType
         //overwrite movespeed and hp here.
         movespeed = 2;
         hp = 2;
-        //setting melee
+        //setting ranged
+        isSpecial = false;
+        isMelee = true;
+        isRanged = true;
     }
 
     //secondary attack, melee hit. B
     public override void Secondary()
     {
+        print("Gunner melee attack");
         StartCoroutine(SecondaryA());
     }
 
     //thrid attack, the projectile. Y
     public override void Tertiary()
     {
+        print("Gunner ranged attack");
         StartCoroutine(TertiaryA());
     }
 
