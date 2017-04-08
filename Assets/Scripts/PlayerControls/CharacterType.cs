@@ -42,7 +42,7 @@ public class CharacterType : MonoBehaviour {
     virtual public void Die()
     {
         GlobalMoveSpeed.AlterSpeed(1f);
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent);
     }
 
     virtual public void Primary() { }
