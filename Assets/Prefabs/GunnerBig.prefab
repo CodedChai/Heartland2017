@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   og: {fileID: 0}
-  speed: 8
+  speed: 3
   lifespan: 39.45
   damage: 5
   hitstun: 0

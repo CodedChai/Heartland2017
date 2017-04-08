@@ -83,7 +83,7 @@ public class Cutscene : MonoBehaviour {
 		iEnum = fadeOut(mcImg);
 		StartCoroutine(iEnum);
 		yield return new WaitForSeconds(3f);
-		Application.LoadLevel("Test");
+		Application.LoadLevel("Level 0");
 	}
 
 	private IEnumerator fadeIn(GameObject img) {

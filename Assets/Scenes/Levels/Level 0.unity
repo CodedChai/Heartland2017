@@ -11698,7 +11698,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.39, y: 0.77}
   m_EdgeRadius: 0
 --- !u!50 &1736133347
 Rigidbody2D:
@@ -12396,7 +12396,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1436902165679446, guid: b2fed9ff9029514428eb8a120e236f28, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 114938807638265098, guid: b2fed9ff9029514428eb8a120e236f28,
         type: 2}
