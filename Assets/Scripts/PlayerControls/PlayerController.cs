@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour {
                 np.name = name;
                 np.name.text = np.GetComponent<CharacterType>().name;
                 characterType.dead = true;//it should kill itself
+                characterType.Die();
 
                 cam.transform.SetParent(og.transform);
                 cam.transform.localPosition = new Vector3(0, 0, -10);
