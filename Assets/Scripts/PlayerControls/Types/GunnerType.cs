@@ -183,5 +183,6 @@ public class GunnerType : CharacterType
         GameObject audio = Instantiate<GameObject>(new GameObject());
         audio.AddComponent<AudioSource>();
         audio.GetComponent<AudioSource>().PlayOneShot(clip);
+        Destroy(audio, 1f);
     }
 }

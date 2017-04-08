@@ -33459,7 +33459,7 @@ Prefab:
     - target: {fileID: 114984142358915556, guid: 9acf9882bc191ba469540612d657044c,
         type: 2}
       propertyPath: curLevel
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114984142358915556, guid: 9acf9882bc191ba469540612d657044c,
         type: 2}
@@ -33470,6 +33470,11 @@ Prefab:
         type: 2}
       propertyPath: levelNames.Array.data[2]
       value: Level 2 Fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114984142358915556, guid: 9acf9882bc191ba469540612d657044c,
+        type: 2}
+      propertyPath: levelNames.Array.data[3]
+      value: MainMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9acf9882bc191ba469540612d657044c, type: 2}
