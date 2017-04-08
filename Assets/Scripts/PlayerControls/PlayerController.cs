@@ -114,12 +114,13 @@ public class PlayerController : MonoBehaviour {
         np.enabled = true;
         characterType.rotationTrans.SetActive(false);
         np.characterType.rotationTrans.SetActive(true);
-        GetComponent<Rigidbody2D>().isKinematic = true;
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<Rigidbody2D>().isKinematic = true;
+        //GetComponent<BoxCollider2D>().enabled = true;
         np.name = name;
         np.name.text = np.GetComponent<CharacterType>().name;
         cam.transform.SetParent(og.transform);
         cam.transform.localPosition = new Vector3(0, 0, -10);
+        
     }
 
     void CheckState()

@@ -16,7 +16,8 @@ public class LevelEnd : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Player" && collision.transform.GetComponent<MindControlType>())
+        print("Collided with end level");
+        if(collision.transform.name == "Player")
             GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().LoadLevel();
     }
 }
