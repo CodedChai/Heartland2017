@@ -15,7 +15,7 @@ public class MindControlType : CharacterType {
 
         name = "Hypno";
         //overwrite movespeed and hp here.
-        hp = 4;
+        hp = 1;
         //setting melee
     }
 
@@ -27,8 +27,8 @@ public class MindControlType : CharacterType {
 
     private IEnumerator Reload()
     {
-        GameObject.Find("Canvas").GetComponentInChildren<FadeIn>().Exit();
-        yield return new WaitForSeconds(.9f);
+  //      GameObject.Find("Canvas").GetComponentInChildren<FadeIn>().Exit();
+//        yield return new WaitForSeconds(.9f);
         GameObject.FindGameObjectWithTag("Unique").GetComponent<StateTrack>().Reload();
         yield return null;
     }

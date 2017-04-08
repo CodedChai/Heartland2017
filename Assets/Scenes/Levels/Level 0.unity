@@ -8444,6 +8444,52 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114762190613316656, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: f5b02487446cb4d478c445a5c1011995,
+        type: 3}
+    - target: {fileID: 224548960879186438, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 335
+      objectReference: {fileID: 0}
+    - target: {fileID: 224548960879186438, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 936
+      objectReference: {fileID: 0}
+    - target: {fileID: 224548960879186438, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 288
+      objectReference: {fileID: 0}
+    - target: {fileID: 224548960879186438, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 670
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762190613316656, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 144
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762190613316656, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 224117453511940560, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -665
+      objectReference: {fileID: 0}
+    - target: {fileID: 224117453511940560, guid: 31cc725c66accbe439c4ab8ce61de5d3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -230
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31cc725c66accbe439c4ab8ce61de5d3, type: 2}
   m_IsPrefabParent: 0
