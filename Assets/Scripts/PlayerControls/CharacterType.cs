@@ -12,7 +12,7 @@ public class CharacterType : MonoBehaviour {
     public bool isMelee = false;
     public bool isRanged = false;
     public bool neutral = true;
-
+    public AudioClip clip;
     public bool dead = false;
 
     //gets the max HP. Current HP is stored in the player controller.
