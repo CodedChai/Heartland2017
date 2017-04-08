@@ -659,6 +659,8 @@ MonoBehaviour:
   isSpecial: 0
   isMelee: 1
   isRanged: 0
+  neutral: 1
+  clip: {fileID: 0}
   dead: 0
   melee: {fileID: 1820283500}
   bigMelee: {fileID: 830318879}
@@ -18565,6 +18567,8 @@ MonoBehaviour:
   isSpecial: 0
   isMelee: 1
   isRanged: 1
+  neutral: 1
+  clip: {fileID: 0}
   dead: 0
   projectile: {fileID: 1710200708061872, guid: f2bed4c5180c82440b423537ef5d7e23, type: 2}
   bigProjectile: {fileID: 1710200708061872, guid: cdb7640c455153d41878e60cac4439a9,
@@ -39065,7 +39069,7 @@ Prefab:
       objectReference: {fileID: 1726876602}
     - target: {fileID: 1012684639291152, guid: 31cc725c66accbe439c4ab8ce61de5d3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31cc725c66accbe439c4ab8ce61de5d3, type: 2}
@@ -43422,6 +43426,8 @@ MonoBehaviour:
   isSpecial: 0
   isMelee: 1
   isRanged: 1
+  neutral: 1
+  clip: {fileID: 0}
   dead: 0
   projectile: {fileID: 1710200708061872, guid: f2bed4c5180c82440b423537ef5d7e23, type: 2}
   bigProjectile: {fileID: 1710200708061872, guid: cdb7640c455153d41878e60cac4439a9,
@@ -51142,6 +51148,8 @@ MonoBehaviour:
   isSpecial: 0
   isMelee: 1
   isRanged: 0
+  neutral: 1
+  clip: {fileID: 0}
   dead: 0
   melee: {fileID: 912922862}
   bigMelee: {fileID: 2041295373}
@@ -52766,6 +52774,8 @@ MonoBehaviour:
   isSpecial: 0
   isMelee: 1
   isRanged: 1
+  neutral: 1
+  clip: {fileID: 0}
   dead: 0
   projectile: {fileID: 1710200708061872, guid: f2bed4c5180c82440b423537ef5d7e23, type: 2}
   bigProjectile: {fileID: 1710200708061872, guid: cdb7640c455153d41878e60cac4439a9,
