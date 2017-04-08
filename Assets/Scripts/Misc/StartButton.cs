@@ -16,8 +16,22 @@ public class StartButton : MonoBehaviour, IPointerClickHandler {
 	void Update () {
 
 	}
-
-	public void OnPointerClick( PointerEventData eventData) {
+    void TaskOnClick()
+    {
+        Debug.Log("You have clicked the button!");
+    }
+    public void OnPointerClick( PointerEventData eventData) {
 		Application.LoadLevel("Cutscene");
 	}
+
+    public void LoadLevel()
+    {
+        Application.LoadLevel("Cutscene");
+
+    }
+    public void OnSubmit()
+    {
+        Application.LoadLevel("Cutscene");
+
+    }
 }
