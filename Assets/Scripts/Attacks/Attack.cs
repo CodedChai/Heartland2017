@@ -5,15 +5,17 @@ using UnityEngine;
 public class Attack : MonoBehaviour {
     public int damage;
     public float hitstun;//not sure if we want this or not, but yeah.
-
+    SpriteRenderer sp;
     public List<Transform> hits;
 
     public bool active = false;
 	// activate and deactivate the move
     public void Activate()
     {
+        sp = GetComponent<SpriteRenderer>();
         hits = new List<Transform>();
         active = true;
+        sp.enabled = true;
     }
 
     //do stuff if in active frames
@@ -40,6 +42,7 @@ public class Attack : MonoBehaviour {
     public void Deactivate()
     {
         active = false;
+        sp.enabled = false;
     }
 
 }
