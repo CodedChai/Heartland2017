@@ -9,6 +9,7 @@ TagManager:
   - Unique
   - MindP
   - Attack
+  - MoveSpeed
   layers:
   - Default
   - TransparentFX
