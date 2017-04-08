@@ -58,6 +58,7 @@ public class BasicAI : MonoBehaviour {
         {
             state = 0;
             pathfinding.target = patrolPoints[currentPatrolPoint];
+            pathFollower.shouldMove = true;
         }
         StateHandler();
 	}
