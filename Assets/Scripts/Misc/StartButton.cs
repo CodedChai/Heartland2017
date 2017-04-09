@@ -14,8 +14,11 @@ public class StartButton : MonoBehaviour, IPointerClickHandler {
 
 	// Update is called once per frame
 	void Update () {
-
-	}
+        if (Input.GetButtonDown("Submit"))
+        {
+            Application.LoadLevel("Cutscene");
+        }
+    }
     void TaskOnClick()
     {
         Debug.Log("You have clicked the button!");
