@@ -27,7 +27,10 @@ public class Cutscene : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(playing)
+        if(Input.GetButtonDown("Fire1") || Input.GetButtonDown("Submit") || Input.GetButtonDown("Fire2") || Input.GetButtonDown("Hypno") || Input.GetButtonDown("Fire2"))
+            Application.LoadLevel("Level 0");
+
+        if (playing)
 			moveUp();
 	}
 

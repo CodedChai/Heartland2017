@@ -66,7 +66,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!95 &95906685463225900
 Animator:
@@ -98,9 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: b9f6d92c921a01d46b57797f68305a10, type: 3}
   og: {fileID: 0}
-  speed: 2.9
+  speed: 2.5
   lifespan: 39.45
-  damage: 5
+  damage: 3
   hitstun: 0
 --- !u!212 &212937835204796034
 SpriteRenderer:

@@ -15,7 +15,7 @@ public class MindProjectile : MonoBehaviour
     // Use this for initialization
 
     // Update is called once per frame
- 
+
     void Update()
     {
         //track time until we break the projectile
@@ -39,17 +39,19 @@ public class MindProjectile : MonoBehaviour
                 //take over.
                 print("I'm U");
                 nextHost = collision.gameObject;
+                foreach (Transform t in transform)
+                {
+                    if (t.name == "Rotation")
+                    {
+                        t.gameObject.SetActive(true);
+                    }
+                }
             }
             else
             {
                 print("boop");
                 Destroy(gameObject);
             }
-
         }
     }
-
-
-
-
 }

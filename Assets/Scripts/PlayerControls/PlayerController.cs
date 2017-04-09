@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour {
         speed = characterType.GetMoveSpeed() + GlobalMoveSpeed.GetSpeedDelta();
         prevPos = transform.position;
         hp = characterType.GetHP();
-        name.text = characterType.name;
+        if(name != null)
+            name.text = characterType.name;
     }
 
 	// Update is called once per frame
